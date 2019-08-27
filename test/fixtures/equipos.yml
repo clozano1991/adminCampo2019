@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campo: one
+  tipoEquipo: MyString
+  marca: MyString
+  modelo: MyString
+  fechaFabricacion: 2018-07-03
+  fechaAdquisicion: 2018-07-03
+  estado: MyString
+  patente: MyString
+  compradoAVendedor: MyString
+
+two:
+  campo: two
+  tipoEquipo: MyString
+  marca: MyString
+  modelo: MyString
+  fechaFabricacion: 2018-07-03
+  fechaAdquisicion: 2018-07-03
+  estado: MyString
+  patente: MyString
+  compradoAVendedor: MyString

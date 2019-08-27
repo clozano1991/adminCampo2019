@@ -1,0 +1,108 @@
+$(document).ready(function(){
+
+
+    // -----parte editando figura del huerto--------------------------------------------------
+    // actualizamos los points
+    $("#huerto_<%=@huerto.id%>").attr("data-porcentajes","<%=@huerto.coordenadas%>");
+    var porcentajes=$("#huerto_<%=@huerto.id%>").attr("data-porcentajes");
+    var coordenadasPosicion = transformarPorcentajesACoordenadasPosicionEnSVG(porcentajes);
+    $("#huerto_<%=@huerto.id%>").attr("points",coordenadasPosicion);
+
+    // quitamos el huerto que se uso para editar, le asignamos la clase huerto desechar y luego escondemos esa clase
+    $("#huertoEditando_<%=@huerto.id%>").attr("class","huertoDesechar")
+    $(".circulitos").attr("class","huertoDesechar");
+    $(".huertoDesechar").hide();
+    $("#huertoEditando_<%=@huerto.id%>").attr("id","") 
+
+
+	// actualizamos los permisos del grid y el texto de la izquierda
+	$(".vistaNormalIndexHuertos").show();
+    $(".vistaEditandoHuertoFiguraIndexHuertos").hide();
+    $("#gridDerechaMapaHuertos").attr("data-permiso","normal");
+
+    // volvemos a mostrar el verdadero huerto y damos el aviso de exito
+    $("#huerto_<%=@huerto.id%>").show();
+    $("#avisoHuertoEditadoDeFormaExitosa").show();
+    $("#avisoHuertoEditadoDeFormaExitosa").fadeOut(3000);
+
+    // ajustamos el nombre del huerto que se muestra en el polyline al hacer el paso del mouse
+    $("#huerto_<%=@huerto.id%>").attr("data-title","<%=@huerto.nombre%>");
+    //(no se esta avtualizando esta ultima parte)
+
+
+
+    // -----parte editando informacion del huerto--------------------------------------------------
+    //Para la parte de la info escondemos el modal y actualizamos la info
+    $("#modal_huerto_<%=@huerto.id%>").modal("hide");
+    mostrarVistaNormalHuertoModal($("#imagenRegresarVistaNormalHuertoModal_<%=@huerto.id%>"));
+    // ahora modificamos la info mostrada
+    $("#nombreHuertoModal_<%=@huerto.id%>").text("<%=@huerto.nombre%>");
+    $("#nombreHuertoModal_<%=@huerto.id%>").css("font-weight","bold");
+    $("#tipoCultivoHuertoModal_<%=@huerto.id%>").text("<%=@huerto.cultivo%>");
+    $("#variedadDeCultivoHuertoModal_<%=@huerto.id%>").text("<%=@huerto.variedades%>");
+
+
+    // vemos el caso de que el text area tenga saltos de linea, los removemos ya que js no los tolera
+    //(pendiente)
+    $("#descripcionHuertoModal_<%=@huerto.id%>").text("<%= @huerto.descripcion.to_s.gsub!(/\n/,'\n')%>");
+    
+    // asignamos el color correspondiente
+    //vemos los colores dependiendo de la clase
+        if ("<%=@huerto.clase%>"=="green"){
+            $("#huerto_<%=@huerto.id%>").attr("fill","#34a853"); 
+        }
+        if("<%=@huerto.clase%>"=="red"){
+            $("#huerto_<%=@huerto.id%>").attr("fill","#ea4335");  
+        }
+        
+        if("<%=@huerto.clase%>"=="yellow"){
+            $("#huerto_<%=@huerto.id%>").attr("fill","#fbbc05"); 
+        }
+        if("<%=@huerto.clase%>"=="blue"){
+            $("#huerto_<%=@huerto.id%>").attr("fill","#4285f4");     
+        }
+        //agregamos la sombra correspondiente al polyline
+        $("#huerto_<%=@huerto.id%>").attr("stroke","#BDBDBE");  
+});
+
+
+function transformarPorcentajesACoordenadasPosicionEnSVG(porcentajes){
+    //hacemos notamos que el utimo elemento del arreglo sera " "
+    var arregloCoordenadasEnPorcentaje= String(porcentajes).split("-");
+    // notamos que el utimo elemento del arreglo sera " ", lo quitamos 
+    arregloCoordenadasEnPorcentaje.pop();
+    //ahora transformamos cada parte del array a coordenadas de posicion en el svg
+    var anchoSvg = $("#gridDerechaMapaHuertos").width();
+    var altoSvg = $("#gridDerechaMapaHuertos").height();
+    var arregloCoordenadasPosicion = [];
+    for (i in arregloCoordenadasEnPorcentaje){
+        var duplaCoordenadasPorcentage= arregloCoordenadasEnPorcentaje[i].split(",");
+        var x=parseFloat(duplaCoordenadasPorcentage[0])*anchoSvg;
+        var y=parseFloat(duplaCoordenadasPorcentage[1])*altoSvg;
+        var duplaCoordenadasPosicion = [];
+        duplaCoordenadasPosicion.push(String(x)+","+String(y));
+        arregloCoordenadasPosicion.push(duplaCoordenadasPosicion[0]);
+    }
+    //aca hacemos que el ultimo elemento de string coordenadas sea el primero, cosa que se cierre 
+    var coordenadaPrimeraPosicionPorcentaje=arregloCoordenadasPosicion[0];
+    arregloCoordenadasPosicion.push(coordenadaPrimeraPosicionPorcentaje);
+
+    // ahora que tenemos un arreglo con las coordenadas en posicion, las metemos todas en un string
+    var stringCoordenadas="";
+    for (i in arregloCoordenadasPosicion){
+        var stringCoordenadas=stringCoordenadas+String(arregloCoordenadasPosicion[i])+" ";
+    }
+
+    // retornamos las coordenadas que tienen que aplicarse al elemento polyline
+    return stringCoordenadas
+}
+
+// en el modal hace que se vuelva a la vista normal
+function mostrarVistaNormalHuertoModal(imagenRegresarClickeada){
+    $(".imagenRegresarANormalHuertoModal_"+ imagenRegresarClickeada.attr("data-idHuerto")).hide();
+    $(".vistaEditandoHuertoModal_"+ imagenRegresarClickeada.attr("data-idHuerto")).hide();
+    $(".vistaBorrarHuertoModal_"+ imagenRegresarClickeada.attr("data-idHuerto")).hide();
+    $(".vistaEditandoInformacionHuertoModal_"+ imagenRegresarClickeada.attr("data-idHuerto")).hide();
+    $(".vistaNormalHuertoModal_"+ imagenRegresarClickeada.attr("data-idHuerto")).show();
+    $(".opcionesEditarBorrarHuertoModal_"+ imagenRegresarClickeada.attr("data-idHuerto")).show();
+}

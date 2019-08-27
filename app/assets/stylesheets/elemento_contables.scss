@@ -1,0 +1,21 @@
+/*-------------------------index principal elementos contables-------------------*/
+.contenedorBotonesBarraArribaContabilidad{
+	margin-left: 20px;
+}
+#vinetaSeleccionarAnoIndexElementosContables{
+	padding-right: 8px;
+	font-weight: bold;
+}
+
+
+.contenedorImagenAgregarElementoContableMasTitulo{
+	display: flex; 
+	flex-direction: row;
+	justify-content: flex-end; 
+}
+
+
+/*--------------------------index especifico elementos contables-----------------*/
+.contenedorInformacionMostrarElementoContable{
+	display: inline;
+}

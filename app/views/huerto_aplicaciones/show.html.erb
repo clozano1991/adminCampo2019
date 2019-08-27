@@ -1,0 +1,67 @@
+<div class="contenedorFondoFichaGenerica">
+  <div class="opcionesArribaFichaGenerica">
+      <h5><strong> Ficha del huerto: <%=@huerto.nombre%></strong></h5>
+  </div>
+
+  <div class="contenedorLinkSuperioresMasContenidoFichaGenerica">
+    <!--LinksSuperioresEmpleado-->
+    <div class="linksSuperioresFichaGenerica">
+        <ul class=" listaLinksFichaGenerica">
+          <li class="elementoListaLinksFichaGenerica">
+              <%=link_to("Principal",user_campo_huerto_path(current_user,@campo, @huerto), :method => "get", class: "linkFichaGenerica")%>
+          </li>
+          <li class="elementoListaLinksFichaGenerica">
+              <%=link_to("Planificación",user_campo_huerto_path(current_user,@campo, @huerto), :method => "get", class: "linkFichaGenerica")%>
+          </li>
+          <li class="elementoListaLinksFichaGenerica">
+              <%=link_to("Trabajos",user_campo_huerto_path(current_user,@campo, @huerto), :method => "get", class: "linkFichaGenerica ")%>
+          </li>
+          <li class="elementoListaLinksFichaGenerica">
+              <%=link_to("Aplicaciones",user_campo_huerto_huerto_aplicaciones_path(current_user,@campo, @huerto), :method => "get", class: "linkFichaGenerica  ")%>
+          </li>
+          <li class="elementoListaLinksFichaGenerica">
+              <%=link_to("Producción",user_campo_huerto_path(current_user,@campo, @huerto), :method => "get", class: "linkFichaGenerica")%>
+          </li>
+          
+        </ul>
+    </div><!--fin LinksSuperioresHuerto-->
+    <div class="FichaGenerica">
+      <div class="contenedorFichaGenericaConPadings">
+
+      	<div class="tituloFilaFichaGenerica">
+        <h5><strong>Detalle de aplicación</strong></h5>
+        </div>
+        <div class="filaFichaGenerica">
+        <div class="columnaFilaFichaGenerica UnaColumnasPorFila">
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Fecha:</strong> <%=" "+ @huerto_aplicacione.fechaaplicacion.to_s%>
+          </div>
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Motivo de uso:</strong> <%=" "+ @huerto_aplicacione.efecto.to_s%>
+          </div>
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Producto comercial:</strong> <%=" "+ @huerto_aplicacione.productocomercial.to_s%>
+          </div>
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Ingrediente activo:</strong> <%=" "+ @huerto_aplicacione.ingredienteactivo.to_s%>
+          </div>
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Encargado de aplicación:</strong> <%=" "+ @huerto_aplicacione.personalacargo.to_s%>
+          </div>
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Ingrediente activo:</strong> <%=" "+ @huerto_aplicacione.recomendadopor.to_s%>
+          </div>
+          <div class="elementoColumnaFilaFichaGenerica">
+            <strong class="elementoNegritaConMargenALaDerecha">Observaciones:</strong> <%=" "+ @huerto_aplicacione.observacion.to_s%>
+          </div>
+        </div>
+        
+      </div><!--fin fila -->
+      	
+      </div> <!--fin contenedorFichaGenericaConPadings-->
+    </div><!--fin FichaGenerica-->
+  </div>
+    
+  </div><!--fin LinksSuperioresEmpleadoMasContenido-->
+</div><!--fin contenedorFondoShowFichaHuerto-->
+

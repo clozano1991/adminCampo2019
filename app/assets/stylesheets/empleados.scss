@@ -1,0 +1,63 @@
+/*--------------------------------------------index----------------*/
+
+
+
+/*------------------------aca lo de borrar un empleado---------------------------*/
+.contenedorModalsBorrarEmpleado{
+	position: absolute;
+}
+.btn.botonRojo.botonConfirmarBorrarEmpleado{
+	float: right; 
+}
+
+/*----------------------------------view new empleado--------------------------------------*/
+#formAgregarEmpleado{
+	width: 100%;
+}
+.filaFichaGenerica.newYEditEmpleado{ 
+	margin-top: 0%;
+	margin-bottom: 0%;
+}
+#contenedorFormAgregarEmpleado{ 
+	position: relative;
+	padding-top: 2.5%;
+	padding-bottom: 5%;
+	padding-left: 8%;
+	padding-right: 8%;
+	background-color: #f0e6c8;
+}
+#botonesAgregandoEmpleadoDerecha{
+	position: absolute;
+	right: 1%;
+}
+.tituloContenedorAgregarEmpleado{
+	position: relative;
+	margin-bottom: 15px;
+}
+.contenedorInformacionAgregarEmpleado{
+	margin-bottom: 50Px;
+	padding: 25px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0, 0.19);
+}
+.form-row{
+	position: relative;
+}
+.form-group.col-md-6{
+	position: relative;
+}
+.form-control.agregarEmpleado{
+	margin-bottom: 19px;
+	border-color: grey;
+	background-color: #e4e4e4;
+}
+.form-control.agregarEmpleado.areaTextoFila{
+   min-height: 120px;	
+}
+.form-control.agregarEmpleado.areaTextoColumna{
+	height: 82%;
+}
+
+
+/*--------- Ficha show Empleado----------*/
+

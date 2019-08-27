@@ -1,0 +1,57 @@
+<div class="contenedorFondoFichaGenerica">
+  <div class="opcionesArribaFichaGenerica">
+      <h5><strong> Parametros del campo: <%=" "+@campo.nombre%></strong></h5> 
+      
+  </div>
+  <div class="contenedorLinkSuperioresMasContenidoFichaGenerica">
+
+    <!--LinksSuperioresEmpleado-->
+    <div class="linksSuperioresFichaGenerica"> 
+        <ul class=" listaLinksFichaGenerica">
+          <li class="elementoListaLinksFichaGenerica">
+              <%=link_to("Pagos a personal",user_campo_gestion_cesantia_seguros_path(current_user,@campo), :method => "get", class: "linkFichaGenerica linkSeleccionadoFichaGenerica")%>
+          </li>
+        </ul>
+    </div><!--fin LinksSuperioresEmpleado-->
+
+    <!-- inicio ficha generica-->
+    <div class="FichaGenerica">
+      <div class="contenedorFichaGenericaConPadings">
+      <div class="contenedorMiniListaContenida">
+      <div class="contenedorOpcionesParametrosDePagosAEmpleados">
+      	<div class="tituloQueSePoneArribaDeLosParametros">
+      		<h5><strong>Parametro:</strong></h5>
+      	</div>
+      	<select class="form-control" id="formInputSeleccionarParametroDePagoAEmpleadosAEditar">
+      		<option>Seguro cesantia</option>
+      		<option>Impuestos</option>
+            <option>Cargas familiares</option>
+        </select>
+      </div>
+ 
+
+        <table class="table table-striped table-bordered tablaMiiListaContenida ">
+          <thead>
+            <tr class="filaSuperiorMiniListaContenida">
+              <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaTresPorFila">Tipo contrato</th>
+              <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaTresPorFila">% aportado por empresa</th>
+              <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaCuatroPorFila">% aportado por empleado</th>
+              <th class="tituloColumnaBotonMiniListaContenida columnaImagenesDerechaMiniListaContenida" > 
+              </th>
+            
+            </tr>
+          </thead>  
+          <tbody>
+            
+            <%=render partial: "gestion_cesantia_seguro", collection: @gestion_cesantia_seguros, locals: {campo: @campo}%>
+
+            
+            
+          </tbody>
+        </table>
+      </div><!--fin contenedorMiniListaContenida-->
+    </div><!--fin FichaEmpleado-->
+  </div>
+  </div><!--fin LinksSuperioresEmpleadoMasContenido-->
+</div><!--fin contenedorFondoShowFichaEmpleado-->
+

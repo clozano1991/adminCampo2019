@@ -1,0 +1,216 @@
+<div class="contenedorFondoFichaGenerica">
+    <%=form_for @empleado, url: user_campo_empleado_path(current_user,@campo), method: :patch,:html => { :id => "formAgregarEmpleado" } do |form| %>
+  <div class="opcionesArribaFichaGenerica">
+      <h5><strong> Editando datos de: <%=@empleado.nombre%> <%=@empleado.apellidos%></strong></h5>
+      <%=form.submit("Confirmar", class: "btn botonVerde ")%>
+  </div>
+  <div class="contenedorLinkSuperioresMasContenidoFichaGenerica">
+    
+
+    <!--LinksSuperioresEmpleado-->
+    <div class="linksSuperioresFichaGenerica">
+    </div><!--fin LinksSuperioresEmpleado-->
+    <div class="bloqueContenedorInformacionPlanillaNewYEdit">
+        <div class="elementoColumnaFilaFichaGenerica">
+            <h5><strong>Datos de la persona</strong></h5>
+        </div>
+        <div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Nombre</strong></label>
+                    <%=form.text_field :nombre, class: "form-control agregarEmpleado"%> 
+                </div>
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Apellidos</strong></label>
+                    <%=form.text_field :apellidos, class: "form-control agregarEmpleado"%> 
+                </div>
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Identificación</strong></label>
+                    <%=form.text_field :rut, class: "form-control agregarEmpleado"%>
+               </div> 
+            </div>
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Dirección</strong></label>
+                    <%=form.text_field :direccion, class: "form-control agregarEmpleado"%>
+                </div>
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Telefono contacto</strong></label>
+                    <%=form.text_field :telefonoContacto, class: "form-control agregarEmpleado"%>
+               </div>
+               <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Telefono emergencia</strong></label>
+                    <%=form.text_field :telefonoEmergencia, class: "form-control agregarEmpleado"%>
+                </div>  
+            </div>
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>E-mail</strong></label>
+                    <%=form.text_field :emailEmpleado, class: "form-control agregarEmpleado"%>
+                </div>   
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Fecha de nacimiento</strong></label>
+                    <%=form.date_field :fechaDesvinculacion, class: "form-control agregarEmpleado"%> 
+                </div>  
+                <div class="elementoColumnaFilaFichaGenerica">
+                
+               </div>  
+            </div>
+        </div><!--fin una fila de la ficha-->
+        <div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica DosColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Descripción de la persona</strong></label>
+                    <%=form.text_area :resumenPersona, class: "form-control agregarEmpleado areaTextoFila"%>
+                </div>  
+            </div>
+            <div class="columnaFilaFichaGenerica DosColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Antecedentes laborales</strong></label>
+                    <%=form.text_area :antecedentesLaborales, class: "form-control agregarEmpleado areaTextoFila"%>
+                </div>  
+            </div>
+        </div><!--fin una fila de la ficha-->
+        <div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Nivel educacional</strong></label>
+                    <%=form.text_area :nivelEducacion, class: "form-control agregarEmpleado areaTextoFila"%>
+                </div> 
+            </div>
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Manejo de tecnologia</strong></label>
+                    <%=form.text_area :manejoTecnologia, class: "form-control agregarEmpleado areaTextoFila"%>
+                </div>
+            </div>
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Otras habilidades</strong></label>
+                    <%=form.text_area :otrasHabilidades, class: "form-control agregarEmpleado areaTextoFila"%>
+                </div> 
+            </div>
+        </div><!--fin una fila de la ficha-->
+    </div><!--fin FichaGenerica-->
+
+
+
+    <div class="bloqueContenedorInformacionPlanillaNewYEdit">
+        <div class="elementoColumnaFilaFichaGenerica">
+            <h5><strong>Datos del cargo y contrato</strong></h5>
+        </div>
+        <div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Cargo</strong></label>
+                    <%=form.text_field :cargo, class: "form-control agregarEmpleado"%> 
+                </div>
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Sueldo base mensual</strong></label>
+                    <%=form.number_field :sueldoBaseMensual, class: "form-control agregarEmpleado", value: 1.0,  step: :any%>
+                </div>
+            </div>
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Fecha contratacion</strong></label>
+                    <%=form.date_field :fechaContratacion, class: "form-control agregarEmpleado"%>
+                </div>
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Fecha desvinculacion(Opcional)</strong></label>
+                    <%=form.date_field :fechaDesvinculacion, class: "form-control agregarEmpleado"%>
+                </div>
+            </div>
+            <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>Tipo de contrato</strong></label>
+                    <%=form.select(:tipoContrato, ["Plazo Fijo","Plazo Indefinido","Por Faena","Desvinculado"],{}, {:class => "form-control agregarEmpleado"} )%> 
+                </div>   
+            </div>
+        </div><!--fin una fila de la ficha-->
+        <div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica UnaColumnaPorFila">
+                <div class="elementoColumnaFilaFichaGenerica">
+                    <label><strong>Resumen del cargo</strong></label>
+                    <%=form.text_area :resumenCargo, class: "form-control agregarEmpleado areaTextoFila" %>
+                </div>     
+           </div>
+        </div><!--fin una fila de la ficha-->
+    </div><!--fin FichaGenerica-->
+
+
+
+    <div class="bloqueContenedorInformacionPlanillaNewYEdit">
+      <div class="elementoColumnaFilaFichaGenerica">
+        <h5><strong>Datos de pagos</strong></h5>
+    </div>
+    <div class="filaFichaGenerica newYEditEmpleado">
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>AFP acogida</strong></label>
+                <%=form.text_field :afpAcogida, class: "form-control agregarEmpleado"%>
+            </div> 
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>Isapre acogida</strong></label>
+                <%=form.text_field :isapreAcogida, class: "form-control agregarEmpleado", value: "Fonasa"%>
+            </div>
+            <div class="elementoColumnaFilaFichaGenerica">
+
+            </div>
+        </div>
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>% cotizacion AFP (usar . para decimales)</strong></label>
+                <%=form.number_field :porcentajeCotizacionAFP, class: "form-control agregarEmpleado", value: 12.0%>
+            </div>
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>% cotizacion Isapre (usar . para decimales)</strong></label>
+                <%=form.number_field :porcentajeCotizacionIsapre, class: "form-control agregarEmpleado", value: 7.0 %>
+            </div>
+            <div class="elementoColumnaFilaFichaGenerica">
+ 
+            </div>
+        </div>
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+        </div>
+    </div><!--fin una fila de la ficha-->
+    </div><!--fin FichaGenerica-->
+<!------------------------agregando datos de la persona------------------------> 
+
+
+<!------------------------agregando datos de cuenta bancaria------------------------> 
+    <div class="bloqueContenedorInformacionPlanillaNewYEdit">
+      <div class="elementoColumnaFilaFichaGenerica">
+        <h5><strong>Datos de cuenta bancaria</strong></h5>
+    </div>
+    <div class="filaFichaGenerica newYEditEmpleado">
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>Institucion bancaria</strong></label>
+                <%=form.text_field :banco, class: "form-control agregarEmpleado"%>
+            </div>
+        </div>
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>Tipo cuenta bancaria</strong></label>
+                <%=form.text_field :tipoCuentaBanco, class: "form-control agregarEmpleado"%>
+            </div>
+        </div>
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+            <div class="elementoColumnaFilaFichaGenerica">
+                <label><strong>Numero cuenta bancaria</strong></label>
+                <%=form.text_field :numeroCuentaBanco, class: "form-control agregarEmpleado"%>
+            </div>
+        </div>
+    </div><!--fin una fila de la ficha-->
+    </div><!--fin FichaGenerica-->
+</div>
+<!------------------------fin agregar datos de cuenta bancaria------------------------> 
+    
+  </div><!--fin LinksSuperioresEmpleadoMasContenido-->
+  <%end%>
+</div><!--fin contenedorFondoShowFichaEmpleado-->
+
+
+
+
+

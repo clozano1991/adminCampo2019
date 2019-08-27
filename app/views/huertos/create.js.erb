@@ -1,0 +1,128 @@
+$(document).ready(function(){
+    console.log("funca");
+    //cerramos el modal donde esta el form para crear
+    cerrarModalCreacionHuerto();
+    //receteamos los datos del fomr para agregar huerto
+    recetearDatosFormAgregarHuerto();
+	// actualizamos los permisos
+    actualizarPermisosGrisDerecha();
+    //botamos el huerto que se uso para crear
+    botarHuertoQueSeUsoParaCrear();
+    console.log("funca botar huerto para crear");
+    //agregamos el polyline 
+    agregarPolyline();
+	//aca mostramos el huerto creado
+    mostrandoHuerto();
+    console.log("pasa el mostrar huerto");
+    // agregamos el modal correspondiente a sus opciones
+    agregandoModal();
+    //vemos que pasa al apretar el huerto creado
+    $("#huerto_<%=@huerto.id%>").click(function(){
+        haciendoClickEnHuerto();
+    }); 
+
+});
+
+//-------------------------------------------------------------------------------------------
+function cerrarModalCreacionHuerto(){
+     // escondemos el modal 
+    $("#agregarHuertoModal").modal("hide");
+}
+function recetearDatosFormAgregarHuerto(){
+    $(".valorFormAgregarHuerto").val("");
+}
+function actualizarPermisosGrisDerecha(){
+    // se muestran los botones normales y se esconden los de agregar huerto
+    $('.vistaAgregandoHuertoIndexHuertos').hide();
+    $('.vistaNormalIndexHuertos').show();
+    //cambiamos el permiso 
+    $("#gridDerechaMapaHuertos").attr("data-permiso","normal"); 
+}
+function botarHuertoQueSeUsoParaCrear(){
+    //cambiamos la clase del huerto que se estaba creando  y lo escondemos.
+    $(".huertoEnCreacion").attr("class","huertoDesechar");
+    $(".circulitos").attr("class","huertoDesechar");
+    $(".huertoDesechar").hide();
+    //cambiamos el id para que si se crea otro no se repita
+    $("#huertoNuevo").attr("id","");
+}
+
+
+ 
+// esta parte no se usa por ahora, el polyline se crea varias vees por alguna razon
+function agregarPolyline(){
+    if ($("#gridDerechaMapaHuertos").attr("data-bloque")=="bloqueHuertosUno"){
+        console.log("entra a agregar polyline");
+        $("#svgMapaBloqueUno").append("<%= j render partial: 'polylineHuertoDesdeCreateJs', locals: {huerto: @huerto } %>");
+    }
+    if ($("#gridDerechaMapaHuertos").attr("data-bloque")=="bloqueHuertosDos"){
+        $("#svgMapaBloqueDos").append("<%= j render partial: 'polylineHuertoDesdeCreateJs', locals: {huerto: @huerto } %>");
+    }
+    if ($("#gridDerechaMapaHuertos").attr("data-bloque")=="bloqueHuertosTres"){
+        $("#svgMapaBloqueTres").append("<%= j render partial: 'polylineHuertoDesdeCreateJs', locals: {huerto: @huerto } %>");
+    }
+}
+function agregandoModal(){
+    $("#modalsHuertosOpciones").append("<%= j render partial: 'huerto', locals: {campo: @campo,huerto: @huerto } %>");
+}
+
+
+function mostrandoHuerto(){
+    //aca tenemos que mostrar el huerto creado
+    //obtenemos las coordenadas de posicion
+    var coordenadasPosicion= transformarPorcentajesACoordenadasPosicionEnSVG($("#huerto_<%=@huerto.id%>").attr("data-porcentajes"));
+    $("#huerto_<%=@huerto.id%>").attr("points",coordenadasPosicion);
+
+    //vemos los colores dependiendo de la clase
+    if("<%=@huerto.clase%>"=="green"){
+        $("#huerto_<%=@huerto.id%>").attr("fill","#34a853");
+    }
+    if("<%=@huerto.clase%>"=="red"){
+        $("#huerto_<%=@huerto.id%>").attr("fill","#ea4335");
+    }
+    if("<%=@huerto.clase%>"=="yellow"){
+        $("#huerto_<%=@huerto.id%>").attr("fill","#fbbc05");
+    }
+    if("<%=@huerto.clase%>"=="blue"){
+        $("#huerto_<%=@huerto.id%>").attr("fill","##4285f4");
+    }
+}
+
+function transformarPorcentajesACoordenadasPosicionEnSVG(porcentajes){
+    //hacemos notamos que el utimo elemento del arreglo sera " "
+    var arregloCoordenadasEnPorcentaje= String(porcentajes).split("-");
+    // notamos que el utimo elemento del arreglo sera " ", lo quitamos 
+    arregloCoordenadasEnPorcentaje.pop();
+    //ahora transformamos cada parte del array a coordenadas de posicion en el svg
+    var anchoSvg = $("#gridDerechaMapaHuertos").width();
+    var altoSvg = $("#gridDerechaMapaHuertos").height();
+    var arregloCoordenadasPosicion = [];
+    for (i in arregloCoordenadasEnPorcentaje){
+        var duplaCoordenadasPorcentage= arregloCoordenadasEnPorcentaje[i].split(",");
+        var x=parseFloat(duplaCoordenadasPorcentage[0])*anchoSvg;
+        var y=parseFloat(duplaCoordenadasPorcentage[1])*altoSvg;
+        var duplaCoordenadasPosicion = [];
+        duplaCoordenadasPosicion.push(String(x)+","+String(y));
+        arregloCoordenadasPosicion.push(duplaCoordenadasPosicion[0]);
+    }
+    //aca hacemos que el ultimo elemento de string coordenadas sea el primero, cosa que se cierre 
+    var coordenadaPrimeraPosicionPorcentaje=arregloCoordenadasPosicion[0];
+    arregloCoordenadasPosicion.push(coordenadaPrimeraPosicionPorcentaje);
+
+    // ahora que tenemos un arreglo con las coordenadas en posicion, las metemos todas en un string
+    var stringCoordenadas="";
+    for (i in arregloCoordenadasPosicion){
+        var stringCoordenadas=stringCoordenadas+String(arregloCoordenadasPosicion[i])+" ";
+    }
+    // retornamos las coordenadas que tienen que aplicarse al elemento polyline
+    return stringCoordenadas
+}
+
+
+
+
+function haciendoClickEnHuerto(){
+        if ($("#gridDerechaMapaHuertos").attr("data-permiso")=="normal"){
+            $("#modal_huerto_<%=@huerto.id%>").modal("show");    
+        }         
+}

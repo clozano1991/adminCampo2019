@@ -1,0 +1,154 @@
+
+<div class="wrapper">
+
+
+	
+
+	<form class="form-inline d-none d-sm-inline-block">
+	</form>
+</a>
+<nav class="navbar navbar-expand navbar-light bg-white">
+	<a class="sidebar-toggle d-flex mr-2">
+		<i class="hamburger align-self-center"></i>
+	</a>
+	<%if user_signed_in?%><!-- condicion de usuario conectado -->
+	<div class="navbar-collapse collapse">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item dropdown">
+
+				<%if user_signed_in?%><!-- condicion de usuario conectado -->
+
+				<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+					<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded-circle mr-1" alt="Chris Wood" /> <span class="text-dark">Chris Wood</span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
+					<a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="pages-settings.html">Ajustes</a>
+						<a class="dropdown-item" href="#">Ayuda</a>
+						<a class="dropdown-item" ><%= link_to('Salir', destroy_user_session_path, class: "dropdown-item" , method: :delete) %> </a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<%end%><!-- fin condicion usuario conectado-->
+</nav>
+
+<main class="content">
+	<div class="container-fluid p-0">
+
+		<div class="row">
+			<div class="col-lg-6 col-xl-5 d-flex">
+				<div class="w-100">
+					<div class="row">
+						<div class="col-sm-6">
+
+
+							<div class="card flex-fill">
+								<div class="card-header">
+									<span class="badge badge-primary float-right">Today</span>
+									<h5 class="card-title mb-0">Visitors</h5>
+								</div>
+								<div class="card-body my-2">
+									<div class="row d-flex align-items-center mb-4">
+										<div class="col-8">
+											<h2 class="d-flex align-items-center mb-0 font-weight-light">
+												17.212
+											</h2>
+										</div>
+										<div class="col-4 text-right">
+											<span class="text-muted">57%</span>
+										</div>
+									</div>
+
+									<div class="progress progress-sm shadow-sm mb-1">
+										<div class="progress-bar bg-primary" role="progressbar" style="width: 57%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<footer class="footer">
+	<div class="container-fluid">
+		<div class="row text-muted">
+			<div class="col-6 text-left">
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<a class="text-muted" href="#">Support</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="#">Help Center</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="#">Privacy</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-muted" href="#">Terms of Service</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-6 text-right">
+				<p class="mb-0">
+					&copy; 2019 - <a href="index.html" class="text-muted">AppStack</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+</div> 
+</div><!-- aca termina el wraper inicial-->
+
+
+
+<!-- --------------------------------------------------------------------------------------->
+
+
+<div class="main">
+	<nav class="navbar navbar-expand navbar-light bg-white">
+		<%if user_signed_in?%> 
+		<a class="sidebar-toggle d-flex mr-2">
+			<i class="hamburger align-self-center"></i>
+		</a>
+
+		<form class="form-inline d-none d-sm-inline-block">
+			<input class="form-control form-control-no-border mr-sm-2" type="text" placeholder="Search projects..." aria-label="Search">
+		</form>
+
+		<div class="navbar-collapse collapse">
+			<ul class="navbar-nav ml-auto">
+
+				<li class="nav-item dropdown">
+					<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+						<i class="align-middle" data-feather="settings"></i>
+					</a>
+
+					<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+						<span class="text-dark"><%=current_user.email%> </span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Cuenta</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="pages-settings.html">Ajustes</a>
+						<a class="dropdown-item" href="#">Ayuda</a>
+						<a class="dropdown-item" ><%= link_to('Salir', destroy_user_session_path, class: "dropdown-item" , method: :delete) %> </a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<%end%>
+	</nav>
+
+	<main class="content">
+		<div class="container-fluid p-0">
+
+			<%=yield%> 
+
+		</div>
+	</main>

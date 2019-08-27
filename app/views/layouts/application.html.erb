@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminCampos</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <div class="barraSuperiorNavegacion">
+    <div class="barraSuperiorNavegacionCosasIzquierda letraNormal">
+      logo
+    </div>
+    <div class="barraSuperiorNavegacionCosasDerecha letraNormal">
+        <% if signed_in? %>   
+          <%= current_user.email %> 
+        <% end %>
+    </div>
+    
+  </div>
+
+
+
+
+
+  
+
+    <%=yield%> 
+
+
+
+ 
+ 
+
+
+
+
+
+</body>
+</html>

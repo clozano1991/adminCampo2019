@@ -1,0 +1,1790 @@
+<div class="contenedorFondoPlanillaContabilidad">
+	<div class="barraArribaPlanillaContabilidad">
+      <div id="">
+        <h5><strong> Contabilidad campo: <%=@campo.nombre%></strong></h5>
+      </div> 
+
+      <div class="botonesBarraArribaPlanillaContabilidadMasSeleccionFecha">
+            <div id="vinetaSeleccionarAnoIndexElementosContables"><%= "Año: "%></div>
+            <div>
+                  <select class="custom-select" id="selectAnoContabilidadEERR" data-userid="<%=current_user.id%>" data-campoid="<%=@campo.id%>">
+                        <% @ano = Time.now.year + 1%>
+                        <%until @ano == 2014 do%>
+                        <!-- verificamos si es el año actual para seleccioanrlo -->
+                        <% if @ano == Time.now.year%>
+                        <option selected="selected"><%=@ano%></option>
+                        <%end %>
+                        <!-- verificamos si es el año actual para no seleccioanrlo -->
+                        <%if @ano != Time.now.year%>
+                        <option><%=@ano%></option>
+                        <%end%>
+                        <% @ano = @ano -1%>
+                        <%end%>
+                  </select>     
+            </div>
+            <!--<div class="contenedorBotonesBarraArribaContabilidad">
+                  <%=link_to(button_tag("Indicadores", class: "btn botonAzul botonBarraArribaPlanillaContabilidad" ),new_user_campo_elemento_contable_path(current_user,@campo), method: :get)%>
+            </div>-->
+      </div>
+    </div>
+
+    <div class="contenedorCuerpoPlanillaContabilidad" id="contenedorCuerpoPlanillaContabilidad" data-planillaContabilidad="planillaPrincipalNoLasEspecificas">
+    <table class="table table-striped  table-bordered">
+      <thead>
+        <tr class="filaSuperiorPlanillaContabilidad">
+          <th class="columnaCuentasPlanillaContabilidad" scope="col">EE.RR.</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Enero</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Febrero</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Marzo</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Abril</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Mayo</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Junio</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Julio</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Agosto</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Septiembre</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Octubre</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Noviembre</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Diciembre</th>
+          <th class="columnaDatosPlanillaContabilidad" scope="col">Total</th> 
+        </tr>
+      </thead>  
+      <tbody>
+
+
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad Ingresos-de-operación">
+      		<td class="casillaConFlechaCuentaPrincipal">
+      			<div class="tituloCuentaPrincipal">Ingresos de operación</div>
+      			<div class="contenedorImagenesFlechas">
+      			<%=image_tag("flechaAbajoCollapse.png", class: "fotoOpcion flechaAbajoMostrarMasInformacionCuentaSeleccionada", id: "flechaAbajoIngresosDeOperacion", :data=>{:flechaCuentaEERR => "IngresosDeOperacion".to_s, :toggle => "tooltip", :placement => "top", :title => "Ampliar"})%>
+                        <%=image_tag("flechaArribaCollapse.png", class: "fotoOpcion flechaArribaMostrarMenosInformacionCuentaSeleccionada",id: "flechaArribaIngresosDeOperacion", :data=>{:flechaCuentaEERR => "IngresosDeOperacion".to_s, :toggle => "tooltip", :placement => "top", :title => "Cerrar"} )%>
+      			</div>
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td class="casillaDatos">
+      			
+      		</td>
+      		<td  class="casillaDatos">
+      			
+      		</td>
+      		<td  class="casillaDatos">
+      			
+      		</td>
+      	</tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionIngresosDeOperacion Ingresos-de-operación-Venta-de-productos">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Venta de productos
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Ingresos-de-operación",:cuentaSecundaria => "Venta-de-productos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Ingresos-de-operación","Venta-de-productos"), method: :get)%>
+                                    <%= image_tag("agregar.png", class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Ingresos-de-operación",:cuentaSecundaria => "Venta-de-productos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionIngresosDeOperacion Ingresos-de-operación-Arriendos-a-terceros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Arriendos a terceros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Ingresos-de-operación",:cuentaSecundaria => "Venta-de-productos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Ingresos-de-operación","Arriendos-a-terceros"), method: :get)%>
+                                    <%= image_tag("agregar.png", class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Ingresos-de-operación",:cuentaSecundaria => "Arriendos-a-terceros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionIngresosDeOperacion Ingresos-de-operación-Otros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Otros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Ingresos-de-operación",:cuentaSecundaria => "otros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Ingresos-de-operación","Otros"), method: :get)%>
+                                    <%= image_tag("agregar.png", class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Ingresos-de-operación",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos ">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad Costos-de-operación">
+      		<td class="casillaConFlechaCuentaPrincipal">
+      			<div class="tituloCuentaPrincipal">Costos de operación</div>
+      			<div class="contenedorImagenesFlechas">
+      			<%=image_tag("flechaAbajoCollapse.png", class: "fotoOpcion flechaAbajoMostrarMasInformacionCuentaSeleccionada",id: "flechaAbajoCostosDeOperacion", :data=>{:flechaCuentaEERR => "CostosDeOperacion".to_s, :toggle => "tooltip", :placement => "top", :title => "Ampliar"})%>
+      			<%=image_tag("flechaArribaCollapse.png", class: "fotoOpcion flechaArribaMostrarMenosInformacionCuentaSeleccionada",id: "flechaArribaCostosDeOperacion", :data=>{:flechaCuentaEERR => "CostosDeOperacion".to_s, :toggle => "tooltip", :placement => "top", :title => "Cerrar"} )%>
+      			</div>
+      		</td>
+      		<td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+      	</tr>
+      	<tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Personal">
+      		<td class=" casillaCuentaSecundaria">
+      			<div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Personal
+                              </div> 
+                              <div>
+                                     <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Personal" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Personal"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Personal" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+      		</td>
+      		<td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+      	</tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Luz">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Luz
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Luz" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Luz"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Luz" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Agua">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Agua
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Agua" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Agua"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Agua" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Equipos">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Equipos
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Equipos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Equipos"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Equipos" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                  
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Combustibles">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Combustibles
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Combustibles" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Combustibles"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Combustibles" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Agroquimicos">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Agroquimicos
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Agroquimicos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Agroquimicos"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Agroquimicos" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Arriendos-para-operación">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Arriendos para operación
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Arriendos-para-operación" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Arriendos-para-operación"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Arriendos-para-operación" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Transportes">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Transportes
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Transportes" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Transportes"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Transportes" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Servicios-externos">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Servicios externos
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Servicios-externos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Servicios-externos"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Servicios-externos" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Depreciación">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Depreciación
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Depreciación" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Depreciación"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Depreciación" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeOperacion Costos-de-operación-Otros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Otros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-operación","Otros"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-operación",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad Costos-de-administración">
+                  <td class="casillaConFlechaCuentaPrincipal">
+                        <div class="tituloCuentaPrincipal">Costos de administración</div>
+                        <div class="contenedorImagenesFlechas">
+                        <%=image_tag("flechaAbajoCollapse.png", class: "fotoOpcion flechaAbajoMostrarMasInformacionCuentaSeleccionada",id: "flechaAbajoCostosDeAdministracion", :data=>{:flechaCuentaEERR => "CostosDeAdministracion".to_s, :toggle => "tooltip", :placement => "top", :title => "Ampliar"})%>
+                        <%=image_tag("flechaArribaCollapse.png", class: "fotoOpcion flechaArribaMostrarMenosInformacionCuentaSeleccionada",id: "flechaArribaCostosDeAdministracion", :data=>{:flechaCuentaEERR => "CostosDeAdministracion".to_s, :toggle => "tooltip", :placement => "top", :title => "Cerrar"} )%>
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeAdministracion Costos-de-administración-Personal-administrativo">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Personal administrativo
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Personal-administrativo" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-administración","Personal-administrativo"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Personal-administrativo" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeAdministracion Costos-de-administración-Servicios-de-contabilidad">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Servicios de contabilidad
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Servicios-de-contabilidad" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-administración","Servicios-de-contabilidad"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Servicios-de-contabilidad" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+             <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeAdministracion Costos-de-administración-Servicios-legales">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Servicios legales
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Servicios-legales" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-administración","Servicios-legales"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Servicios-legales" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionCostosDeAdministracion Costos-de-administración-Otros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Otros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Costos-de-administración","Otros"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Costos-de-administración",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad filaNegrita Resultado-operacional">
+      		<td class="tituloCuentaPrincipal">
+      			Resultado operacional
+      		</td>
+      		<td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+      	</tr>
+
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad  Otros-costos-e-ingresos" >
+      		<td class="casillaConFlechaCuentaPrincipal">
+      			<div class="tituloCuentaPrincipal">Otros costos e ingresos</div>
+      			<div class="contenedorImagenesFlechas">
+      			<%=image_tag("flechaAbajoCollapse.png", class: "fotoOpcion flechaAbajoMostrarMasInformacionCuentaSeleccionada",id: "flechaAbajoOtrosCostosEIngresos", :data=>{:flechaCuentaEERR => "OtrosCostosEIngresos".to_s, :toggle => "tooltip", :placement => "top", :title => "Ampliar"})%>
+                        <%=image_tag("flechaArribaCollapse.png", class: "fotoOpcion flechaArribaMostrarMenosInformacionCuentaSeleccionada",id: "flechaArribaOtrosCostosEIngresos", :data=>{:flechaCuentaEERR => "OtrosCostosEIngresos".to_s, :toggle => "tooltip", :placement => "top", :title => "Cerrar"} )%>
+      			</div>
+      		</td>
+      		<td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+      	</tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionOtrosCostosEIngresos Otros-costos-e-ingresos-Comisión-por-venta">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Comisión por venta
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Comisión-por-venta" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Otros-costos-e-ingresos","Comisión-por-venta"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Comisión-por-venta" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionOtrosCostosEIngresos Otros-costos-e-ingresos-Intereses-de-capital">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Intereses de capital
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Intereses-de-capital" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Otros-costos-e-ingresos","Intereses-de-capital"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Intereses-de-capital" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionOtrosCostosEIngresos Otros-costos-e-ingresos-Utilidad-por-venta-de-activos">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Util. por venta de activos
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Utilidad-por-venta-de-activos" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Otros-costos-e-ingresos","Utilidad-por-venta-de-activos"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Utilidad-por-venta-de-activos" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionOtrosCostosEIngresos Otros-costos-e-ingresos-Seguros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Seguros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Seguros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Otros-costos-e-ingresos","Seguros"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Seguros" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionOtrosCostosEIngresos Otros-costos-e-ingresos-Diferencia-de-cambio">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Diferencia de cambio
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Diferencia-de-cambio" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Otros-costos-e-ingresos","Diferencia-de-cambio"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Diferencia-de-cambio" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionOtrosCostosEIngresos Otros-costos-e-ingresos-Otros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Otros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Otros-costos-e-ingresos","Otros"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Otros-costos-e-ingresos",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad filaNegrita Utilidad-antes-de-impuestos">
+      		<td class="tituloCuentaPrincipal">
+      			Util. antes de impuestos
+      		</td>
+      		<td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+      	</tr>
+            <tr class="filaCuentaPrincipalPlanillaContabilidad  Impuestos" >
+                  <td class="casillaConFlechaCuentaPrincipal">
+                        <div class="tituloCuentaPrincipal">Impuestos</div>
+                        <div class="contenedorImagenesFlechas">
+                        <%=image_tag("flechaAbajoCollapse.png", class: "fotoOpcion flechaAbajoMostrarMasInformacionCuentaSeleccionada",id: "flechaAbajoImpuestos", :data=>{:flechaCuentaEERR => "Impuestos".to_s, :toggle => "tooltip", :placement => "top", :title => "Ampliar"})%>
+                        <%=image_tag("flechaArribaCollapse.png", class: "fotoOpcion flechaArribaMostrarMenosInformacionCuentaSeleccionada",id: "flechaArribaImpuestos", :data=>{:flechaCuentaEERR => "Impuestos".to_s, :toggle => "tooltip", :placement => "top", :title => "Cerrar"} )%>
+                        </div>
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+      	<tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionImpuestos Impuestos-Impuesto-a-utilidad-bruta">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Impuesto a utilidad bruta
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Impuestos",:cuentaSecundaria => "Impuesto-a-utilidad-bruta" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Impuestos","Impuesto-a-utilidad-bruta"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Impuestos",:cuentaSecundaria => "Impuesto-a-utilidad-bruta" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+            <tr class="filaCuentaSecundariaPlanillaContabilidad subInformacionImpuestos Impuestos-Otros">
+                  <td class=" casillaCuentaSecundaria">
+                        <div class="contenedorImagenAgregarElementoContableMasTitulo">
+                              <div>
+                                    Otros
+                              </div> 
+                              <div>
+                                    <%= link_to(image_tag("verDetalleLupa.png", class: "fotoOpcion",:data=>{ :cuentaPrincipal => "Impuestos",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Ingreso", :toggle => "tooltip", :placement => "top", :title => "detalle de datos"}), user_campo_indexEspecificoElementosContables_path(current_user,@campo,"Impuestos","Otros"), method: :get)%>
+                                    <%= image_tag("agregar.png",id: "",class: "fotoOpcion imagenAgregarDatoContable",:data=>{ :cuentaPrincipal => "Impuestos",:cuentaSecundaria => "Otros" , :ingresoGastoProbable => "Gasto", :toggle => "tooltip", :placement => "top", :title => "agregar dato"})%>
+                              </div>   
+                        </div>
+                  </td>      
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+            </tr>
+
+      	<tr class="filaCuentaPrincipalPlanillaContabilidad  filaNegrita Utilidad-neta">
+      		<td class="tituloCuentaPrincipal">
+      			Utilidad neta
+      		</td>
+      		<td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+                  <td  class="casillaDatos">
+                        
+                  </td>
+      	</tr>
+      </tbody>
+    </table>
+    </div><!-- fin contenedor cuerpo-planilla tabla contabiliad -->
+
+    <div><!-- contenedor modals para agregar datos a la planilla contable -->
+          <%=render partial: "agregandoElementoAPlanillaContable", locals: {campo: @campo}%>
+    </div>
+
+
+</div><!-- fin contenedor fondo planilla contabiliad -->
