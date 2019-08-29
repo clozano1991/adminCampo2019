@@ -11,7 +11,7 @@
           <%= image_tag("editarAmarillo.png",class: "fotoOpcion imagenEditarCampo",:data=>{:idCampo => (campo.id).to_s, :toggle => "tooltip", :placement => "top", :title => "editar campo"})%>
           <%=image_tag("deleteRed.png",class: "fotoOpcion imagenBorrarCampo",:data=>{:idCampo => (campo.id).to_s, :toggle => "tooltip", :placement => "top", :title => "borrar campo"})%>
         </span>
-        <h5 class="card-title mb-0"><strong><%=campo.nombre%></strong></h5>
+        <div class="card-title mb-0 letraNormal"><strong><%=campo.nombre%></strong></div>
       </div><!--   fi del card header -->
       <div class="card-body"> <!--    el cuerpo de lo que esta en la ficha de un campo (parte de la izquierda)  -->
         <div class="bodyFichaCampo">
@@ -51,7 +51,7 @@
 
       <div class="card-header">
         <span class=" float-right"><%=image_tag("ticketVerde.png",class: "fotoOpcion ticketGuardarCambiosNotasCampo",:data=>{:idCampo => (campo.id).to_s, :toggle => "tooltip", :placement => "top", :title => "guardar cambios"})%></span>
-        <h5 class="card-title mb-0"><strong>Notas</strong></h5>
+        <div class="card-title mb-0 letraNormal"><strong>Notas</strong></div>
       </div>
 
       <div class="card-body fichaDerechaCampo">

@@ -78,7 +78,7 @@ ul{
 /* -------------------------------------------------------------------------------------------*/
 /* para las opciones de editar o borrar con icono, o la que sea necesario*/
 .fotoOpcion{
-	width: 18px;
+	width: 15px;
 	margin-left: 10px;
 	cursor: pointer;
 }
@@ -119,9 +119,13 @@ ul{
 .letraChica{
 	font-size: 10px;     
 }
+.letraNormalChica{
+	font-size: 13.8px;
+}
+
 .letraNormal{
 	font-size: 16px;     
 }
-.letraGrande{
+.letraGrande{ 
 	font-size: 22px; 
 }

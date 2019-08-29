@@ -1,11 +1,11 @@
 <div class="contenedorFondoPlanillaContabilidad">
 	<div class="barraArribaPlanillaContabilidad">
-      <div id="">
-        <h5><strong> Contabilidad campo: <%=@campo.nombre%></strong></h5>
-      </div> 
+        <div class="letraNormal">
+           <strong> Contabilidad campo: <%=@campo.nombre%></strong>
+        </div> 
 
       <div class="botonesBarraArribaPlanillaContabilidadMasSeleccionFecha">
-            <div id="vinetaSeleccionarAnoIndexElementosContables"><%= "Año: "%></div>
+            <div class="letraNormal" id="vinetaSeleccionarAnoIndexElementosContables"><%= "Año: "%></div>
             <div>
                   <select class="custom-select" id="selectAnoContabilidadEERR" data-userid="<%=current_user.id%>" data-campoid="<%=@campo.id%>">
                         <% @ano = Time.now.year + 1%>
@@ -29,23 +29,23 @@
     </div>
 
     <div class="contenedorCuerpoPlanillaContabilidad" id="contenedorCuerpoPlanillaContabilidad" data-planillaContabilidad="planillaPrincipalNoLasEspecificas">
-    <table class="table table-striped  table-bordered">
+    <table class="table table-striped  table-bordered letraNormalChica">
       <thead>
         <tr class="filaSuperiorPlanillaContabilidad">
-          <th class="columnaCuentasPlanillaContabilidad" scope="col">EE.RR.</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Enero</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Febrero</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Marzo</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Abril</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Mayo</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Junio</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Julio</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Agosto</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Septiembre</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Octubre</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Noviembre</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Diciembre</th>
-          <th class="columnaDatosPlanillaContabilidad" scope="col">Total</th> 
+          <th class="columnaCuentasPlanillaContabilidad letraNormalChica" scope="col">EE.RR.</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Enero</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Febrero</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Marzo</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Abril</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Mayo</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Junio</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Julio</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Agosto</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Septiembre</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Octubre</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Noviembre</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Diciembre</th>
+          <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Total</th> 
         </tr>
       </thead>  
       <tbody>
