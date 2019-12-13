@@ -27,10 +27,10 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content modalParaHuerto">
 
-      <div class="modal-header">
+      <div class="modal-header letraNormal">
         <div class="nombreHuertoModal"> 
-          <h5 class="contenedorInformacionTituloHuertoModal"><strong>Huerto:</strong></h5>
-          <h5 class="contenedorInformacionTituloHuertoModal" id="nombreHuertoModal_<%=huerto.id%>"><strong><%=huerto.nombre%></strong></h5>
+          <div class="contenedorInformacionTituloHuertoModal"><strong>Huerto:</strong></div>
+          <div class="contenedorInformacionTituloHuertoModal" id="nombreHuertoModal_<%=huerto.id%>"><strong><%=huerto.nombre%></strong></div>
         </div>
         <div class="imagenesDerechaModalIndexHuerto">
           <div class="opcionesEditarBorrarHuertoModal opcionesEditarBorrarHuertoModal_<%=huerto.id%> ">
@@ -46,26 +46,39 @@
          </button>
        </div>
      </div><!-- fin vista Modal header --> 
-     <div class="modal-body">
+     <div class="modal-body letraNormal">
       <div class="contenedorVistasHuertoModal">
 
         <div class="vistaNormalHuertoModal vistaNormalHuertoModal_<%=huerto.id%>">
           <div class="contenedorInformacionHuertoModal">
+            
             <div class="elementoInformacionHuertoModal"> 
-              <h5 class="contenedorSubInformacionSubTitulo"><strong> Tipo de cultivo:</strong></h5>
-              <h5 class="contenedorSubInformacionSubTitulo" id="tipoCultivoHuertoModal_<%=huerto.id%>"><%="  "+ huerto.cultivo%></h5>
+              <div class="contenedorSubInformacionSubTitulo"><strong> Forma de cultivo:</strong></div>
+              <div class="contenedorSubInformacionSubTitulo" id="tipoCultivoHuertoModal_<%=huerto.id%>"><%="  "+ huerto.cultivo%></div>
             </div>
+            
             <div class="elementoInformacionHuertoModal">
-              <h5 class="contenedorSubInformacionSubTitulo"><strong> Variedades de cultivo:</strong></h5>
-              <h5 class="contenedorSubInformacionSubTitulo" id="variedadDeCultivoHuertoModal_<%=huerto.id%>"><%= "  "+ huerto.variedades%></h5>
+              <div class="contenedorSubInformacionSubTitulo"><strong> Variedad de cultivo:</strong></div>
+              <div class="contenedorSubInformacionSubTitulo" id="variedadDeCultivoHuertoModal_<%=huerto.id%>"><%= "  "+ huerto.variedades%></div>
             </div>
+
+            <div class="elementoInformacionHuertoModal"> 
+              <div class="contenedorSubInformacionSubTitulo"><strong> N° Hectareas:</strong></div>
+              <div class="contenedorSubInformacionSubTitulo" id="tipoCultivoHuertoModal_<%=huerto.id%>"><%="  "+ (huerto.nhectareas).to_s%></div>
+            </div>
+
+            <div class="elementoInformacionHuertoModal"> 
+              <div class="contenedorSubInformacionSubTitulo"><strong> N° Plantas:</strong></div>
+              <div class="contenedorSubInformacionSubTitulo" id="tipoCultivoHuertoModal_<%=huerto.id%>"><%="  "+ (huerto.nplantas).to_s%></div>
+            </div>
+
             <!--
             <div class="elementoInformacionHuertoModal">
               <h5><strong> Fecha plantacion:</strong><%=%></h5>
             </div>-->
             <div class="elementoInformacionHuertoModal">
-              <h5 class="contenedorSubInformacionSubTitulo"><strong> Descripción:</strong></h5>
-              <h5 id="descripcionHuertoModal_<%=huerto.id%>"><%=" " + huerto.descripcion%></h5>
+              <div class="contenedorSubInformacionSubTitulo"><strong> Descripción:</strong></div>
+              <div id="descripcionHuertoModal_<%=huerto.id%>"><%=" " + huerto.descripcion%></div>
             </div>
           </div>
           <div class="botonesModalVistaNormal">

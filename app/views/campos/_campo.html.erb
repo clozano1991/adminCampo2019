@@ -31,6 +31,7 @@
         </div>
         <div class="ParteInferiorBodyFichaCampo">
           <div class="botonesBodyFichaCampo">
+            <%=link_to(button_tag("Proveedores", class: "btn botonAzul botonFichaCampo" ),user_campo_proveedors_path(current_user,campo), method: :get  )%>
             <%=link_to(button_tag("Huertos", class: "btn botonAzul botonFichaCampo"),user_campo_huertos_path(current_user,campo), method: :get  )%>
             <%=link_to(button_tag("Contabilidad", class: "btn botonAzul botonFichaCampo" ),user_campo_elemento_contables_path(current_user,campo), method: :get  )%>
             <!--<%=link_to(button_tag("Equipos", class: "btn botonAzul botonFichaCampo" ),user_campo_equipos_path(current_user,campo), method: :get  )%>-->
@@ -45,7 +46,7 @@
 
 
 
-  <!--    ---------------------------------- para la ficha de la nota----------------------------------------     -->
+  <!--    ------------------------ para la ficha de la nota--------------------------------     -->
   <div class="fichaCampoDerecha">
     <div class="card flex-fill w-100">
 

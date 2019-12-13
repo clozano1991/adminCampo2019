@@ -1,12 +1,12 @@
 <div class="contenedorFondoFichaGenerica">
-  <div class="opcionesArribaFichaGenerica">
-      <h5><strong> Ficha del huerto: <%=@huerto.nombre%></strong></h5>
+  <div class="opcionesArribaFichaGenerica letraNormal">
+      <div><strong> Ficha del huerto: <%=@huerto.nombre%></strong></div>
   </div>
 
   <div class="contenedorLinkSuperioresMasContenidoFichaGenerica">
     <!--LinksSuperioresEmpleado-->
-    <div class="linksSuperioresFichaGenerica">
-        <ul class=" listaLinksFichaGenerica">
+    <div class="linksSuperioresFichaGenerica ">
+        <ul class=" listaLinksFichaGenerica letraNormal">
           <li class="elementoListaLinksFichaGenerica">
               <%=link_to("Principal",user_campo_huerto_path(current_user,@campo, @huerto), :method => "get", class: "linkFichaGenerica linkSeleccionadoFichaGenerica")%>
           </li>
@@ -28,29 +28,29 @@
     <div class="FichaGenerica">
       <div class="contenedorFichaGenericaConPadings">
 
-      <div class="tituloFilaFichaGenerica">
-        <h5><strong>Datos Básicos</strong></h5>
+      <div class="tituloFilaFichaGenerica letraNormal">
+        
       </div>
-      <div class="filaFichaGenerica">
+      <div class="filaFichaGenerica ">
         <div class="columnaFilaFichaGenerica DosColumnasPorFila">
-          <div class="elementoColumnaFilaFichaGenerica">
+          <div class="elementoColumnaFilaFichaGenerica letraNormal">
             <strong>Campo:</strong> <%=" "+ @campo.nombre%>
           </div>
-          <div class="elementoColumnaFilaFichaGenerica">
+          <div class="elementoColumnaFilaFichaGenerica letraNormal">
             <strong>Cultivo:</strong> <%=" "+ @huerto.cultivo%>
           </div>
-          <div class="elementoColumnaFilaFichaGenerica">
+          <div class="elementoColumnaFilaFichaGenerica letraNormal">
             <strong>Variedades:</strong> <%=" "+ @huerto.variedades%>
           </div>
-          <div class="elementoColumnaFilaFichaGenerica">
+          <div class="elementoColumnaFilaFichaGenerica letraNormal">
             <strong>Fecha Plantación:</strong> <%=" --------- "%>
           </div>
         </div>
         <div class="columnaFilaFichaGenerica DosColumnasPorFila">
-          <div class="elementoColumnaFilaFichaGenerica">
+          <div class="elementoColumnaFilaFichaGenerica letraNormal">
             <strong>Descripcion:</strong>
           </div>
-          <div class="elementoColumnaFilaFichaGenerica">
+          <div class="elementoColumnaFilaFichaGenerica letraNormal">
             <%=@huerto.descripcion%>
           </div>
         </div>

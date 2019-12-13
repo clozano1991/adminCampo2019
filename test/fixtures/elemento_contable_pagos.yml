@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2019-10-13
+  montopagado: 1
+  metodopago: MyString
+  observacion: MyString
+  elemento_contable: one
+
+two:
+  fecha: 2019-10-13
+  montopagado: 1
+  metodopago: MyString
+  observacion: MyString
+  elemento_contable: two

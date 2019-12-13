@@ -3,30 +3,67 @@
 <!-- esta parte se ejecutara solo cuando queremos poner algo en la tabla -->
 <% if @adentroTablaElementosContablesEspecificos == true %>
   <tr class="filaListaGrande" id="filaElementoContableEspecifico_<%=elementoContableEspecifico.id%>">
-      <td class="columnaInformacionListaGrandeTresPorFila">
-      	  <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
+
+    <td class="columnaInformacionListaGrandeSeisPorFila">
+          <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
             <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
-              <%=elementoContableEspecifico.nombre%> 
-            </div>
-      	  </div>
+              <%@buscandoProveedor= "sinProveedor"%>
+              <%proveedors.each do |x|%>
+                <%if x.id == elementoContableEspecifico.proveedor_id%>
+                  <%=x.razonsocial%>
+                  <%@buscandoProveedor= "Tiene"%>
+                <%end%>
+              <%end%>
+              <%if @buscandoProveedor == "sinProveedor"%>
+                  <%="Sin Proveedor Registrado"%>
+              <%end%>
+            </div> 
+          </div>
       </td>
-      <td class="columnaInformacionListaGrandeTresPorFila">
-      	  <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="fechaElementoContable_<%=elementoContableEspecifico.id%>">
+
+      <td class="columnaInformacionListaGrandeSeisPorFila">
+          <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
+              <%=elementoContableEspecifico.numerodocumento%> 
+            </div>
+          </div>
+      </td>
+
+      <td class="columnaInformacionListaGrandeSeisPorFila">
+          <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
               <%=elementoContableEspecifico.fecha%> 
             </div>
+          </div>
+      </td>
+
+      <td class="columnaInformacionListaGrandeSeisPorFila">
+      	  <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
+              <%=elementoContableEspecifico.fechaparapago%> 
+            </div>
       	  </div>
       </td>
-      <td class="columnaInformacionListaGrandeTresPorFila">
+
+      <td class="columnaInformacionListaGrandeSeisPorFila">
           <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
             <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="montoConTipoIngresoEgresoElementoContable_<%=elementoContableEspecifico.id%>">
-              <%if elementoContableEspecifico.tipoIngresoEgreso == "Ingreso"%>
-                <%=elementoContableEspecifico.monto%>
+
+                <%=elementoContableEspecifico.montoexento+elementoContableEspecifico.montoneto+elementoContableEspecifico.montoivarecuperable+elementoContableEspecifico.montovalorotroimpuesto%> 
+          
+              
+            </div>
+          </div>
+      </td>
+            <td class="columnaInformacionListaGrandeSeisPorFila">
+          <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="fechaElementoContable_<%=elementoContableEspecifico.id%>">
+                <%if elementoContableEspecifico.tipoIngresoEgreso == "Ingreso"%>
+                <%=elementoContableEspecifico.montoexento+elementoContableEspecifico.montoneto+elementoContableEspecifico.montoivarecuperable+elementoContableEspecifico.montovalorotroimpuesto%> 
               <%end%>
               <%if elementoContableEspecifico.tipoIngresoEgreso == "Gasto"%>
-                <%=elementoContableEspecifico.monto*-1%>
+                <%=(elementoContableEspecifico.montoexento+elementoContableEspecifico.montoneto+elementoContableEspecifico.montoivarecuperable+elementoContableEspecifico.montovalorotroimpuesto)*-1%>
               <%end%>
-              
             </div>
           </div>
       </td>
@@ -35,8 +72,11 @@
       	   <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>" >
               <div class="contenedorImagenesYBotonesDerechaListaGrande">
       	   	   <div class="imagenesDerechaListaGrande">
-      	   	   	   <%=image_tag("verDetalleLupa.png", class: "fotoOpcion imagenMostrarElementoContable", :data=>{:idElementoContable => (elementoContableEspecifico.id).to_s, :toggle => "tooltip", :placement => "top", :title => "Detalle"})%>
-                    <%=image_tag("editarAmarillo.png",class: "fotoOpcion imagenEditarElementoContable", :data=>{:idElementoContable => (elementoContableEspecifico.id).to_s, :toggle => "tooltip", :placement => "top", :title => "Editar"})%>
+
+                   <%=link_to(image_tag("verDetalleLupa.png",class: "fotoOpcion", :data=>{ :toggle => "tooltip", :placement => "top", :title => "Editar"}),user_campo_elemento_contable_elemento_contable_pagos_path(current_user,@campo, elementoContableEspecifico.id), method: :get)%>
+
+                    <%=link_to(image_tag("editarAmarillo.png",class: "fotoOpcion", :data=>{ :toggle => "tooltip", :placement => "top", :title => "Editar"}),edit_user_campo_elemento_contable_path(current_user,@campo, elementoContableEspecifico.id), method: :get)%>
+
                     <%=image_tag("deleteRed.png",class: "fotoOpcion imagenBorrarElementoContable" , :data=>{:idElementoContable => (elementoContableEspecifico.id).to_s, :toggle => "tooltip", :placement => "top", :title => "Borrar"})%> 
                </div>
               </div>
@@ -109,74 +149,6 @@
 
 <!-- _______________________________________________________________________________-->
 <!-- modal para editar un elemento contable-->
-
-
-<div class="modal fade bd-example-modal-lg " id="modal_editar_elemento_contable_<%=elementoContableEspecifico.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header"> 
-        <h5 class="modal-title" id="tituloModalAgregarElementoContable">
-          Editando elemento contable
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" >
-       <%=form_for elementoContableEspecifico, url: user_campo_elemento_contable_path(current_user,@campo,elementoContableEspecifico), method: :patch,remote: true, :html => { :class => "formPlanillaNewYEdit" } do |form| %>
-
-      
-       
-      <!-- fin fields escondidos-->
-
-       <div class="filaInformacionPlanillaNewYEdit">
-        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit"> 
-          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Razon del movimiento</strong></label>
-            <%=form.text_field :nombre, class: "form-control agregarInformacionPlanillaNewYEdit",required: true, :maxlength => 55%>  
-          </div>
-        </div>
-        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
-          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-             <label><strong>Fecha (mes/día/año)</strong></label>
-            <%=form.date_field :fecha, class: "form-control agregarInformacionPlanillaNewYEdit", required: true%>
-          </div>
-        </div>
-      </div>
-
-      <div class="filaInformacionPlanillaNewYEdit">
-        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
-          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Monto</strong></label>
-            <%=form.number_field :monto, class: "form-control agregarInformacionPlanillaNewYEdit", in: 0.0..999999999999.0, step: :any, required: true%>
-          </div>
-        </div>
-        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
-          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Ingreso o gasto</strong></label>
-            <%=form.select(:tipoIngresoEgreso, ["Ingreso","Gasto"],{}, {:class => "form-control agregarInformacionPlanillaNewYEdit", id: "selectIngresoGastoElementoContableNew"} )%>
-          </div>
-        </div>
-      </div>
-
-      <div class="filaInformacionPlanillaNewYEdit">
-        <div class="columnaInformacionUnaPorFilaPlanillaNewYEdit">
-          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Observacion</strong></label>
-            <%=form.text_area :observacion, class: "form-control agregarInformacionPlanillaNewYEdit textArea"%>         
-          </div>
-        </div>
-      </div>
-
-
-      <%=form.submit("Guardar", class: "btn botonVerde ", id: "botonConfirmarCrearCampo")%>
-      <%end%>
-    </div>
-  </div>
-</div>
-</div>
-
-
 
 
 <!-- _______________________________________________________________________________-->

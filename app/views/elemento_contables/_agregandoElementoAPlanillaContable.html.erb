@@ -2,59 +2,141 @@
 <div class="modal fade bd-example-modal-lg " id="modalAgregandoDatoContable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header"> 
-        <h5 class="modal-title" id="tituloModalAgregarElementoContable"></h5>
+      <div class="modal-header">  
+        <div class="modal-title letraNormal" id="tituloModalAgregarElementoContable">
+         
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>  
         </button>
       </div>
-      <div class="modal-body" >
+      <div class="modal-body letraNormalChica" >
        <%=form_for @elemento_contable, url: user_campo_elemento_contables_path(current_user,@campo), method: :post,remote: true, :html => { :class => "formPlanillaNewYEdit" } do |form| %>
-
+       
        <!-- fields que estan escondidos, se modifican con js-->
        <%=form.text_field :cuentaprincipal, class: "form-control formEscondido", id: "agregarCuentaPrincipalElementoContable"%>
-       <%=form.text_field :cuentasecundaria, class: " form-control formEscondido", id: "agregarCuentaSecundariaElementoContable"%> 
+       <%=form.text_field :cuentasecundaria, class: " form-control formEscondido", id: "agregarCuentaSecundariaElementoContable"%>   
+       <%=form.text_field :proveedor_id, class: " form-control formEscondido", id: "proveedorAAsociarUnElementoContable"%>  
        
       <!-- fin fields escondidos-->
 
        <div class="filaInformacionPlanillaNewYEdit">
         <div class="columnaInformacionDosPorFilaPlanillaNewYEdit"> 
+
           <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Razon del movimiento</strong></label>
-            <%=form.text_field :nombre, class: "form-control agregarInformacionPlanillaNewYEdit", placeholder: "Ej: Pago luz, compra de suministros, etc.",required: true, :maxlength => 55%>  
+            <label><strong>Razon Social Proveedor</strong></label>
+            <select class="form-control agregarInformacionPlanillaNewYEdit" id="selectNombreProveedorPlanillaNewYEdit">
+                <%for x in  @arregloNombreProveedors do%>
+                        <% if x == "Sin Proveedor Registrado"%>
+                           <option selected="selected">Sin Proveedor Registrado</option>
+                           <%next%>
+                        <%end %>
+                        <option> <%=x%></option>
+                <%end%> 
+            </select> 
           </div>
-        </div>
-        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
+
           <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-             <label><strong>Fecha (mes/día/año)</strong></label>
+            <label><strong>Tipo Documento</strong></label>
+            <%=form.select(:tipodocumento, ["Factura","Nota Debito","Nota Credito", "Boleta", "Otros"],{}, {:class => "form-control agregarInformacionPlanillaNewYEdit",id: "selectTipoDocumentoPlanillaNewYEdit",required: true, :maxlength => 55})%>  
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+             <label><strong>Fecha Emición  (m / d / a)</strong></label>
             <%=form.date_field :fecha, class: "form-control agregarInformacionPlanillaNewYEdit", value: Time.now.strftime("%Y-%m-%d"), required: true%>
           </div>
-        </div>
-      </div>
 
-      <div class="filaInformacionPlanillaNewYEdit">
+
+
+
+        </div><!-- fin columna   -->
         <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
+
           <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Monto</strong></label>
-            <%=form.number_field :monto, class: "form-control agregarInformacionPlanillaNewYEdit", in: 0.0..999999999999.0, step: :any, required: true%>
+              <label><strong>Rut Proveedor</strong></label>
+              <div class="form-control agregarInformacionPlanillaNewYEdit" id="rutProveedorAgregandoElementoContablePlanillaNewYEdit">
+            </div>
           </div>
-        </div>
-        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
+
           <div class="contenedorInformacionColumnaPlanillaNewYEdit">
-            <label><strong>Ingreso o gasto</strong></label>
+              <label><strong>Numero Documento</strong></label>
+              <%=form.text_field :numerodocumento, class: "form-control agregarInformacionPlanillaNewYEdit",required: true, :maxlength => 55, value: "0" %> 
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+             <label><strong>Fecha Vencimiento (m / d / a)</strong></label>
+            <%=form.date_field :fechaparapago, class: "form-control agregarInformacionPlanillaNewYEdit", value: Time.now.strftime("%Y-%m-%d"), required: true%>
+          </div>
+
+        </div> <!-- fin columna   -->
+      </div><!--    fin fila --->
+
+
+
+ 
+
+<!--    -------------------------------------------------------------------->
+      <div class="filaInformacionPlanillaNewYEdit agregandoElementoContableLineaArriba">
+        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Tipo Movimiento</strong></label>
             <%=form.select(:tipoIngresoEgreso, ["Ingreso","Gasto"],{}, {:class => "form-control agregarInformacionPlanillaNewYEdit", id: "selectIngresoGastoElementoContableNew"} )%>
           </div>
-        </div>
-      </div>
 
-      <div class="filaInformacionPlanillaNewYEdit">
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Neto</strong></label>
+            <%=form.number_field :montoneto, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true, value: 0, id: "agregandoElementoContableMontoNeto"%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto IVA Recuperable</strong></label>
+            <%=form.number_field :montoivarecuperable, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true, value: 0, id: "agregandoElementoContableMontoIvaRecuperable"%>
+          </div>
+
+
+        </div><!-- fin columna   -->
+
+
+ 
+        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit">
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Exento</strong></label>
+            <%=form.number_field :montoexento, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true, value: 0, id: "agregandoElementoContableMontoExento"%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Otros Impuestos</strong></label>
+            <%=form.number_field :montovalorotroimpuesto, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true, value: 0,  id: "agregandoElementoContableMontoValorOtroImpuesto"%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Total a Pagar</strong></label>
+            <div class="form-control agregarInformacionPlanillaNewYEdit" id="agregandoElementoCntableMontoTotalAPagar">
+                0
+            </div>
+        
+          </div>
+
+        </div><!-- fin columna   -->
+      </div><!--    fin fila --->
+
+
+
+
+
+<!--    -------------------------------------------------------------------->
+      <div class="filaInformacionPlanillaNewYEdit agregandoElementoContableLineaArriba">
         <div class="columnaInformacionUnaPorFilaPlanillaNewYEdit">
+
           <div class="contenedorInformacionColumnaPlanillaNewYEdit">
             <label><strong>Observacion</strong></label>
             <%=form.text_area :observacion, class: "form-control agregarInformacionPlanillaNewYEdit textArea"%>         
           </div>
-        </div>
-      </div>
+
+        </div><!-- fin columna   -->
+      </div><!--    fin fila --->
 
 
       <%=form.submit("Agregar", class: "btn botonVerde ", id: "botonConfirmarCrearCampo")%>

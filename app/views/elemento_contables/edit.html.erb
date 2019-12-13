@@ -1,0 +1,163 @@
+<div class="contenedorFondoFichaGenerica" id="contenedorPlanillaEditandoElementoContable" data-contenedorPlanillaEditandoElementoContable ="editandoElementoContable" data-campoid = "<%=@campo.id%>" data-userid = "<%=current_user.id%>" data-tipoDocumento = "<%=@elemento_contable.tipodocumento%>">
+
+
+	       <%=form_for @elemento_contable, url: user_campo_elemento_contable_path(current_user,@campo,@elemento_contable), method: :patch, :html => { :class => "formPlanillaNewYEdit" } do |form| %>
+<!-- como la razon social y el rut del proveedor no es una atributo del elemeno contable sino que se obtiene del id del proveedor, cuando modificamos eso lo que se modifica es el id de el, por eso lo siguinete-->
+<%=form.text_field :proveedor_id, class: " form-control formEscondido", id: "proveedorAAsociarUnElementoContable"%>  
+
+
+
+	<div class="opcionesArribaFichaGenerica">  
+		<div><strong> Editando Elemento Contable</strong></div>
+		<%=form.submit("Guardar", class: "btn botonVerde")%> 
+	</div>
+	<div class="contenedorLinkSuperioresMasContenidoFichaGenerica"> 
+
+		<!------------------------agregando datos de la persona------------------------>    
+<div class=bloqueContenedorInformacionPlanillaNewYEdit>
+			<div class="elementoColumnaFilaFichaGenerica letraNormal">
+				<div><strong>Datos de Elemento Contable</strong></div> 
+			</div>
+			<div class="filaInformacionPlanillaNewYEdit">
+
+
+
+        <div class="columnaInformacionCuatroPorFilaPlanillaNewYEdit"> 
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Razon Social Proveedor</strong></label>
+            <select class="form-control agregarInformacionPlanillaNewYEdit" id="selectNombreProveedorPlanillaNewYEdit">
+
+              <%@buscandoProveedor= "sinProveedor"%>
+              <%@Proveedors.each do |x|%>
+                <%if x.id == @elemento_contable.proveedor_id%>
+                  <option selected="selected"><%=x.razonsocial%></option>
+                  <%@buscandoProveedor= "Tiene"%>
+                <%else%> 
+                  <option> <%=x.razonsocial%></option>  
+                <%end%>
+              <%end%>
+              <%if @buscandoProveedor == "sinProveedor"%>
+                  <option selected="selected"><%="Sin Proveedor Registrado"%></option>
+              <%else%>
+                  <option><%="Sin Proveedor Registrado"%></option>
+              <%end%>
+
+            </select> 
+          </div> 
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Tipo Documento</strong></label>
+            <%=form.select(:tipodocumento, ["Factura","Nota Debito","Nota Credito", "Boleta", "Otros"],{}, {:class => "form-control agregarInformacionPlanillaNewYEdit",id: "selectTipoDocumentoPlanillaNewYEdit",required: true, :maxlength => 55})%>  
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+             <label><strong>Fecha Emición </strong></label>
+            <%=form.date_field :fecha, class: "form-control agregarInformacionPlanillaNewYEdit", required: true%>
+          </div>
+
+
+
+
+        </div><!-- fin columna   -->
+        <div class="columnaInformacionCuatroPorFilaPlanillaNewYEdit">
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+              <label><strong>Rut Proveedor</strong></label>
+              <div class="form-control agregarInformacionPlanillaNewYEdit" id="rutProveedorAgregandoElementoContablePlanillaNewYEdit">
+            </div>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+              <label><strong>Numero Documento</strong></label>
+              <%=form.text_field :numerodocumento, class: "form-control agregarInformacionPlanillaNewYEdit",required: true, :maxlength => 55%> 
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+             <label><strong>Fecha Vencimiento </strong></label>
+            <%=form.date_field :fechaparapago, class: "form-control agregarInformacionPlanillaNewYEdit", required: true%>
+          </div>
+
+        </div> <!-- fin columna   -->
+
+        <div class="columnaInformacionDosPorFilaPlanillaNewYEdit"> 
+        	          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Observacion</strong></label>
+            <%=form.text_area :observacion, class: "form-control agregarInformacionPlanillaNewYEdit textArea"%>         
+          </div>
+
+        </div>
+
+      </div><!--    fin fila --->
+
+
+
+ 
+
+<!--    -------------------------------------------------------------------->
+      <div class="filaInformacionPlanillaNewYEdit agregandoElementoContableLineaArriba">
+        <div class="columnaInformacionCuatroPorFilaPlanillaNewYEdit">
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Tipo Movimiento</strong></label>
+            <%=form.select(:tipoIngresoEgreso, ["Ingreso","Gasto"],{}, {:class => "form-control agregarInformacionPlanillaNewYEdit", id: "selectIngresoGastoElementoContableNew"} )%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Neto</strong></label>
+            <%=form.number_field :montoneto, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true,  id: "agregandoElementoContableMontoNeto"%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto IVA Recuperable</strong></label>
+            <%=form.number_field :montoivarecuperable, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true,  id: "agregandoElementoContableMontoIvaRecuperable"%>
+          </div>
+
+
+        </div><!-- fin columna   -->
+
+
+ 
+        <div class="columnaInformacionCuatroPorFilaPlanillaNewYEdit">
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Exento</strong></label>
+            <%=form.number_field :montoexento, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true, id: "agregandoElementoContableMontoExento"%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Otros Impuestos</strong></label>
+            <%=form.number_field :montovalorotroimpuesto, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true,  id: "agregandoElementoContableMontoValorOtroImpuesto"%>
+          </div>
+
+          <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+            <label><strong>Monto Total a Pagar</strong></label>
+            <div class="form-control agregarInformacionPlanillaNewYEdit" id="agregandoElementoCntableMontoTotalAPagar">
+                <%= @elemento_contable.montoneto + @elemento_contable.montoexento + @elemento_contable.montoivarecuperable + @elemento_contable.montovalorotroimpuesto%>
+            </div>
+        
+          </div>
+
+        </div><!-- fin columna   -->
+         <div class="columnaInformacionCuatroPorFilaPlanillaNewYEdit"> 
+        </div>
+         <div class="columnaInformacionCuatroPorFilaPlanillaNewYEdit"> 
+        </div>
+      </div><!--    fin fila --->
+
+
+
+
+
+<!--    -------------------------------------------------------------------->
+
+		</div><!--fin bloque informacion-->
+<!------------------------ fin agregando datos basicos de proveedor ------------------------>
+<!------------------------ fin agregando datos basicos de proveedor ------------------------>
+			
+
+		<!------------------------fin agregar datos ------------------------> 
+		
+	</div><!--fin LinksSuperioresEmpleadoMasContenido-->
+	<%end%>
+</div><!--fin contenedorFondoShowFichaEmpleado-->

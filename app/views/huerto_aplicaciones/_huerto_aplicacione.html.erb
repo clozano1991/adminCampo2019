@@ -1,26 +1,33 @@
  <!-- esta parte se ejecutara solo cuando queremos poner algo en la tabla -->
 <% if @adentroTablaHuertoAplicaciones == true %>
   <tr class="filaMiniListaContenida" id="filaHuerto_aplicacione_<%=huerto_aplicacione.id%>">
-      <td class="columnaInformacionMiniListaContenidaCuatroPorFila">
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila">
       	  <div class="pocaInformacionMiniListaContenida huerto_aplicacioneTablaPocaInformacion_<%=huerto_aplicacione.id%>">
             <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
               <%=huerto_aplicacione.fechaaplicacion%>
             </div> 
       	  </div>
       </td>
-      <td class="columnaInformacionMiniListaContenidaCuatroPorFila">
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila">
       	  <div class="pocaInformacionMiniListaContenida huerto_aplicacioneTablaPocaInformacion_<%=huerto_aplicacione.id%>">
             <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
               <%=huerto_aplicacione.efecto%>
             </div>
-      	  </div>
+      	  </div> 
       </td>
-      <td class="columnaInformacionMiniListaContenidaCuatroPorFila">
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila">
       	   <div class="pocaInformacionMiniListaContenida huerto_aplicacioneTablaPocaInformacion_<%=huerto_aplicacione.id%>">
             <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
               <%=huerto_aplicacione.productocomercial%>
             </div>
       	   </div>
+      </td>
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila" >
+          <div class="pocaInformacionMiniListaContenida huerto_aplicacioneTablaPocaInformacion_<%=huerto_aplicacione.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
+              <%=huerto_aplicacione.ingredienteactivo%>
+            </div>
+          </div>
       </td>
       <td class="columnaInformacionMiniListaContenidaCincoPorFila" >
       	  <div class="pocaInformacionMiniListaContenida huerto_aplicacioneTablaPocaInformacion_<%=huerto_aplicacione.id%>">

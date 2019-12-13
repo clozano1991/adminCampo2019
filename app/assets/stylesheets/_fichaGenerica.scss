@@ -11,7 +11,7 @@
 	padding-right: 0.8%;
 	background-color: #f0e6c8;
 } 
-.opcionesArribaFichaGenerica{
+.opcionesArribaFichaGenerica{  
 	position: relative;
 	display: flex; 
 	flex-direction: row;
@@ -59,7 +59,7 @@
 	padding-top: 10px;
 	padding-left: 4px;
 	padding-right: 4px;
-	font-size: 16px;
+	/*font-size: 16px;*/
 	font-weight: bold;
 	color: #505050;
 }
@@ -78,13 +78,13 @@
 .contenedorFichaGenericaConPadings{
     min-height: 200px;
 	padding-top: 18px;
-	padding-bottom: 15px;
+	padding-bottom: 2px;
 	padding-left: 15px;
 	padding-right: 15px;
 	margin-bottom: 25px;
 }
 .tituloFilaFichaGenerica{  
-	/*usar h5*/
+	
 }
 .filaFichaGenerica{
 	position: relative;
@@ -92,9 +92,9 @@
 	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	margin-top: 10px;
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 }
 .columnaFilaFichaGenerica{
 	padding-left: 3px;
@@ -103,12 +103,15 @@
 /*------------------elegimos que columna usar dependiendo de cuantas tiene una fila-------------*/
 .columnaFilaFichaGenerica.UnaColumnaPorFila{
     width: 100%;
+    max-width: 100%;
 }
 .columnaFilaFichaGenerica.DosColumnasPorFila{
     width: 49%;
+    max-width: 49%;
 }
 .columnaFilaFichaGenerica.TresColumnasPorFila{
 	width: 32.8%;
+	max-width: 49%;
 }
 /*--------------- los elementos que van en las columnas de una fila---------------*/
 .elementoColumnaFilaFichaGenerica{

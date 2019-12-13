@@ -1,4 +1,9 @@
 $(document).ready(function(){ 
 	$("#modal_borrar_elemento_contable_<%=@elemento_contable.id%>").modal("hide");
+	//en el caso de estar en el la parte espesifica:
 	$("#filaElementoContableEspecifico_<%=@elemento_contable.id%>").hide();
+	//en el caso de estar en el la parte total:
+	$("#filaElementoContableTotal_<%=@elemento_contable.id%>").hide();
+
+
 });

@@ -7,15 +7,22 @@
 	font-weight: bold;
 }
 
-
 .contenedorImagenAgregarElementoContableMasTitulo{
 	display: flex; 
 	flex-direction: row;
 	justify-content: flex-end; 
 }
 
-
 /*--------------------------index especifico elementos contables-----------------*/
 .contenedorInformacionMostrarElementoContable{
 	display: inline;
 }
+
+/*------------------------agregando un elemento contable-------------------------*/
+.filaInformacionPlanillaNewYEdit.agregandoElementoContableLineaArriba{
+    border-top: solid;
+    border-color: darkgrey;
+    border-width: 2px;
+    padding-top: 30px;
+}
+

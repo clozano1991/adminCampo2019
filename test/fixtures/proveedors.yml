@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  campo: one
+  razonsocial: MyString
+  rut: MyString
+  tipoproductoservicio: MyString
+  direccion: MyString
+  nombrecontacto: MyString
+  telefonocontacto: MyString
+  parapagobanco: MyString
+  parapagotipocuentabancaria: MyString
+  parapagonumerocuentabancaria: MyString
+  parapagonombreasociadoacuentabancaria: MyString
+  parapagorutasociadoacuentabancaria: MyString
+
+two:
+  campo: two
+  razonsocial: MyString
+  rut: MyString
+  tipoproductoservicio: MyString
+  direccion: MyString
+  nombrecontacto: MyString
+  telefonocontacto: MyString
+  parapagobanco: MyString
+  parapagotipocuentabancaria: MyString
+  parapagonumerocuentabancaria: MyString
+  parapagonombreasociadoacuentabancaria: MyString
+  parapagorutasociadoacuentabancaria: MyString

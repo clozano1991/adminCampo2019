@@ -1,0 +1,82 @@
+<div class="contenedorFondoListaGrande">
+
+  <div class="barraArribaListaGrande letraNormal">
+    <div id="">
+      <div><strong> Proveedores campo: <%=@campo.nombre%></strong></div> 
+      
+    </div> 
+    <div class="botonesBarraArribaListaGrande">
+          <!-- filtro por tipo de contrato-->
+          <div class="letraNormalChica" id="vinetaSeleccionarAnoIndexElementosContables"><%= "Tipo contratos: "%>
+          </div>
+            <div>
+                  <select class="custom-select" id="selectAnoContabilidadEERR" data-userid="<%=current_user.id%>" data-campoid="<%=@campo.id%>">
+                        <% @ano = Time.now.year + 1%>
+                        <%until @ano == 2014 do%>
+                        <!-- verificamos si es el año actual para seleccioanrlo -->
+                        <% if @ano == Time.now.year%>
+                        <option selected="selected"><%=@ano%></option>
+                        <%end %>
+                        <!-- verificamos si es el año actual para no seleccioanrlo -->
+                        <%if @ano != Time.now.year%>
+                        <option><%=@ano%></option>
+                        <%end%>
+                        <% @ano = @ano -1%>
+                        <%end%>
+                  </select>    
+            </div>
+            <!-- filtro por contrato vigente-->
+            <div class="letraNormalChica" id="vinetaSeleccionarAnoIndexElementosContables"><%= "Estado contratos: "%>
+            </div>
+            <div>
+                  <select class="custom-select" id="selectAnoContabilidadEERR" data-userid="<%=current_user.id%>" data-campoid="<%=@campo.id%>">
+                        <% @ano = Time.now.year + 1%>
+                        <%until @ano == 2014 do%>
+                        <!-- verificamos si es el año actual para seleccioanrlo -->
+                        <% if @ano == Time.now.year%>
+                        <option selected="selected"><%=@ano%></option>
+                        <%end %>
+                        <!-- verificamos si es el año actual para no seleccioanrlo -->
+                        <%if @ano != Time.now.year%>
+                        <option><%=@ano%></option>
+                        <%end%>
+                        <% @ano = @ano -1%>
+                        <%end%>
+                  </select>     
+            </div>
+          
+              <%=link_to(button_tag("+ Proveedor", class: "btn botonNaranjo botonBarraArribaListaGrande" ),new_user_campo_proveedor_path(current_user,@campo), method: :get  )%>
+
+    </div>
+  </div>
+ 
+  <div class="listaGrande">
+    <table class="table table-striped  table-bordered ">
+      <thead>
+        <tr class="filaSuperiorListaGrande">
+          <th class="tituloColumnaListaGrande letraNormalChica" scope="col">Razon Social</th>
+          <th class="tituloColumnaListaGrande letraNormalChica" scope="col">Rut</th>
+          <th class="tituloColumnaListaGrande letraNormalChica" scope="col">Trabajo Ofrecido</th>
+          <th class="tituloColumnaListaGrande letraNormalChica" scope="col">Nombre Contacto</th>
+          <th class="tituloColumnaListaGrande letraNormalChica" scope="col">Telefono Contacto</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>  
+      <tbody>
+          <% @adentroTablaProveedor = true %>
+          <%=render partial: "proveedor", collection: @proveedors, locals: {campo: @campo}%>
+          <% @adentroTablaProveedor= false %>
+      </tbody>
+    </table>
+  </div>
+
+</div><!--fin contenedorFondoIndexEmpleados-->
+
+  
+<!--+++++++++++++++++modals para confirmar borrar un empleado+++++++++++++++++++++++++++++++++-->
+<div class="contenedorModalsBorrarProveedor"> 
+<% @adentroContenedorModalsBorrarProveedor = true %>
+<%=render partial: "proveedor", collection: @proveedors, locals: {campo: @campo}%>
+</div>
+<% @adentroContenedorModalsBorrarProveedor  = false %>
+<!--+++++++++++++++++fin modals para confirmar borrar un empleado++++++++++++++++++++++++++++-->

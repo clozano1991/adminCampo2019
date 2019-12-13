@@ -11,37 +11,56 @@ $(document).ready(function(){
       mostrandoMasInformacionFlechaAbajo($(this));
     });
     $(".flechaArribaMostrarMenosInformacionCuentaSeleccionada").each(function(){
-      mostrandoMenosInformacionFlechaArriba($(this));
+      mostrandoMenosInformacionFlechaArriba($(this)); 
     });
     // Cuando se hace click en la imagen para mostrar un modal que agrega datos contabes
-    $(".imagenAgregarDatoContable").each(function(){ 
+    $(".imagenAgregarDatoContable").each(function(){  
      mostrarModalAgregarDatoContableYActualizarDatosDeModal($(this));
    });
     // usando ajax para retirar informacion y mostrarla una vez que se cambia de año
     $("#selectAnoContabilidadEERR").change(function(){
       recopilandoInformacionPlanillaContabilidadEERRDeAnoSeleccionado();
     });
+    //usando ajax para detectar el proveedor cuando se selecciona una factura
+    $("#selectNombreProveedorPlanillaNewYEdit").change(function(){
+      detectandoProveedorAQuienAsociarElElementoContableParaCrear();
+    });
+    //al estar agregando un elemento contable, para ajustar el monto final que es la suma de los otros
+    $(".verificableParaMontoTotal").each(function(){ 
+       actualizandoMontoTotalAlEstarAgregandoUnElementoContable($(this));
+    });
   }
-  //verificamos si estamos en el domumento de cuentas especificas, 
+
+
+
+//-----------------------editando un elemento contable---------------------------------------
+  if ($("#contenedorPlanillaEditandoElementoContable").attr("data-contenedorPlanillaEditandoElementoContable")=="editandoElementoContable") {
+    //inicialmente detectamos el proveedor y rut cuando se abre la vista para editar un elemento contable
+    detectandoProveedorAQuienAsociarElElementoContableAlEstarEditando();
+    //usando ajax para detectar el proveedor cuando se selecciona un elemento contable
+    $("#selectNombreProveedorPlanillaNewYEdit").change(function(){
+      detectandoProveedorAQuienAsociarElElementoContableAlEstarEditando();
+    });
+    //al estar editandoun elemento contable, para ajustar el monto final (usamos la msisma que para agregar)
+    $(".verificableParaMontoTotal").each(function(){ 
+       actualizandoMontoTotalAlEstarAgregandoUnElementoContable($(this));
+    });
+  }
+
+  //--------------------------------cuentas especificas----------------------------------- 
   //para que de otra manera no se ejecuten los codigos de los modals y todo eso
   if ($("#contenedorListadoElementosContablesEspecificos").attr("data-contenedorListadoElementosContablesEspecificos")=="contenedorListadoElementosContablesEspecificos") {
     // Cuando se hace click en el basurero para borrar un elemento contable
     $(".imagenBorrarElementoContable").each(function(){ 
        mostrarModalBorrarElementoContable($(this));
     });
-    // Cuando se hace click en la lupa para mostrar el detalle del elemento contable
-    $(".imagenMostrarElementoContable").each(function(){ 
-       mostrarModalMostrarElementoContable($(this));
-    });
-    // para editar un elemento contable en las cuentas especificas
-    $(".imagenEditarElementoContable").each(function(){ 
-       mostrarModalEditarElementoContable($(this));
-    });
   }
+
+  //fin de las llamadas a funciones
   });
 
 
-//----------------funciones index especificos elemento_contables --------------------
+//----------------funciones detalle especificos y total elemento_contables --------------------
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 
@@ -51,26 +70,10 @@ function mostrarModalBorrarElementoContable(imagenBorrarElementoContable){
   });
 }
 
-function mostrarModalMostrarElementoContable(imagenMostrarElementoContable){
-  $(imagenMostrarElementoContable).click(function(){
-       $("#modal_mostrar_elemento_contable_"+imagenMostrarElementoContable.attr("data-idElementoContable")).modal("show");
-  });
-}
-
-function mostrarModalEditarElementoContable(imagenEditarElementoContable){
-    $(imagenEditarElementoContable).click(function(){
-       $("#modal_editar_elemento_contable_"+imagenEditarElementoContable.attr("data-idElementoContable")).modal("show");
-    });
-}
-
-
-
-
-
 //----------------funciones index elemento_contables principal (EERR) --------------------
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
-//------------------------------ flechas para mostrar mas o menos
+// flechas para mostrar mas o menos
 function mostrandoMasInformacionFlechaAbajo(imagenFlechaAbajo){
 	$(imagenFlechaAbajo).click(function(){
    $(".subInformacion"+imagenFlechaAbajo.attr("data-flechaCuentaEERR")).show();
@@ -84,9 +87,10 @@ function mostrandoMenosInformacionFlechaArriba(imagenFlechaArriba){
    $(this).hide();
    $("#flechaAbajo"+imagenFlechaArriba.attr("data-flechaCuentaEERR")).show();
  });
-}
+} 
 
-//---------------------------- agregando datos con modals segun la imagen que se muestra----------------
+//----------------agregando un elemento contable-------------------------------
+//agregando datos con modals segun la imagen que se muestra
 function mostrarModalAgregarDatoContableYActualizarDatosDeModal(imagenAgregarDatoContable){
   $(imagenAgregarDatoContable).click(function(){
        //modificamos los datos del modal segun los datos que nos entrega la imagen (los valores ocultos)
@@ -99,9 +103,96 @@ function mostrarModalAgregarDatoContableYActualizarDatosDeModal(imagenAgregarDat
        $("#agregarCuentaPrincipalElementoContable").val(cuentaPrincipal);
        $("#agregarCuentaSecundariaElementoContable").val(cuentaSecundaria);
        $("#selectIngresoGastoElementoContableNew").val(ingresoGastoProbable);
+       $("#selectNombreProveedorPlanillaNewYEdit").val("Sin Proveedor Registrado")
+       $("#selectRutProveedorPlanillaNewYEdit").val("Sin RUT Registrado")
+       $("#selectTipoDocumentoPlanillaNewYEdit").val("Factura")
        //se muestra el modal con la informacion pertinente
-       $("#modalAgregandoDatoContable").modal("show");
+       $("#modalAgregandoDatoContable").modal("show"); 
      });
+}
+//usando ajax para buscar el id del proveedor seleccionado cuando se agrega una factura o un documento contable
+function detectandoProveedorAQuienAsociarElElementoContableParaCrear(){
+        // obtenemos el nombre del proveedor seleccionado
+        var razonSocial = $("#selectNombreProveedorPlanillaNewYEdit").val();
+        //Nos aprovechamos de la info que esta guardada en la parte del año
+        var campoid = $("#selectAnoContabilidadEERR").attr("data-campoid");
+        var userid = $("#selectAnoContabilidadEERR").attr("data-userid");
+        //console.log(razonSocial)
+        //usamos la info para llamar el json
+        $.getJSON("/users/"+userid+"/campos/"+campoid+"/detectandoProveedorConRazonSocial",{razonSocial: razonSocial}, function(result){
+          $.each(result,function(i,field){
+            //console.log(field.razonsocial)
+            $("#rutProveedorAgregandoElementoContablePlanillaNewYEdit").text(String(field.rut))
+            $("#proveedorAAsociarUnElementoContable").val(field.id)
+            // ojo que la fecha esta en ano-mes-dia  y que para js a diferencia de ruby el mes parte con enero en 0
+            //arregloInfoElementosContablesRecopilados.push(String(field.cuentaprincipal)+"-"+String(field.cuentasecundaria)+","+String((new Date(field.fecha)).getMonth())+","+String(field.tipoIngresoEgreso)+","+String(field.monto) );
+          });
+        //mostrandoInformacionElementosContables(arregloInfoElementosContablesRecopilados);
+        });
+        if($("#selectNombreProveedorPlanillaNewYEdit").val()=="" | $("#selectNombreProveedorPlanillaNewYEdit").val()=="Sin Proveedor Registrado"){
+              $("#rutProveedorAgregandoElementoContablePlanillaNewYEdit").text(String(" "))
+              $("#proveedorAAsociarUnElementoContable").val("")
+        }
+
+        //finalmente hacemos un impass para agregar los datos del proveedor donde corresponden
+}
+// actualizando el valor del monto total a pagar cuando se esta agregando un elemento contable
+function actualizandoMontoTotalAlEstarAgregandoUnElementoContable(inputFormMontoValor){
+  // para cuando se levanta una tela en los imput de valores
+  $(inputFormMontoValor).keyup(function(){
+    // obtenemos los valores necesarios
+    var montoNeto = parseInt($("#agregandoElementoContableMontoNeto").val());
+    var montoIvaRecuperable = parseInt($("#agregandoElementoContableMontoIvaRecuperable").val());
+    var montoExento = parseInt($("#agregandoElementoContableMontoExento").val());
+    var montoValorOtrosImpuestos = parseInt($("#agregandoElementoContableMontoValorOtroImpuesto").val());
+    //obtenemos el total
+    var montoTotal = montoNeto+montoIvaRecuperable+montoExento+montoValorOtrosImpuestos
+    // ponemos el monto asociado a la cantidad y valor de la fila correspondiente
+    $("#agregandoElementoCntableMontoTotalAPagar").text(String(montoTotal));
+  });
+  // para cuando se produce un change en el input
+  $(inputFormMontoValor).change(function(){
+    // obtenemos los valores necesarios
+    var montoNeto = parseInt($("#agregandoElementoContableMontoNeto").val());
+    var montoIvaRecuperable = parseInt($("#agregandoElementoContableMontoIvaRecuperable").val());
+    var montoExento = parseInt($("#agregandoElementoContableMontoExento").val());
+    var montoValorOtrosImpuestos = parseInt($("#agregandoElementoContableMontoValorOtroImpuesto").val());
+    //obtenemos el total
+    var montoTotal = montoNeto+montoIvaRecuperable+montoExento+montoValorOtrosImpuestos
+    // ponemos el monto asociado a la cantidad y valor de la fila correspondiente
+    $("#agregandoElementoCntableMontoTotalAPagar").text(String(montoTotal));
+
+  });
+}
+
+
+
+//-----------------------------------editando un elemento contable---------------------
+//-----------------------------------------------------------------------
+
+//------------usando ajax para buscar el id del proveedor seleccionado cuando se esta EDITANDO una factura o un documento contable
+function detectandoProveedorAQuienAsociarElElementoContableAlEstarEditando(){
+        // obtenemos el nombre del proveedor seleccionado
+        var razonSocial = $("#selectNombreProveedorPlanillaNewYEdit").val();
+        //Nos aprovechamos de la info que esta guardada en la parte del año
+        var campoid = $("#contenedorPlanillaEditandoElementoContable").attr("data-campoid");
+        var userid = $("#contenedorPlanillaEditandoElementoContable").attr("data-userid");
+        //console.log(razonSocial)
+        //usamos la info para llamar el json
+        $.getJSON("/users/"+userid+"/campos/"+campoid+"/detectandoProveedorConRazonSocial",{razonSocial: razonSocial}, function(result){
+          $.each(result,function(i,field){
+            //console.log(field.razonsocial)
+            $("#rutProveedorAgregandoElementoContablePlanillaNewYEdit").text(String(field.rut))
+            $("#proveedorAAsociarUnElementoContable").val(field.id)
+            // ojo que la fecha esta en ano-mes-dia  y que para js a diferencia de ruby el mes parte con enero en 0
+            //arregloInfoElementosContablesRecopilados.push(String(field.cuentaprincipal)+"-"+String(field.cuentasecundaria)+","+String((new Date(field.fecha)).getMonth())+","+String(field.tipoIngresoEgreso)+","+String(field.monto) );
+          });
+        //mostrandoInformacionElementosContables(arregloInfoElementosContablesRecopilados);
+        });
+        if($("#selectNombreProveedorPlanillaNewYEdit").val()=="" | $("#selectNombreProveedorPlanillaNewYEdit").val()=="Sin Proveedor Registrado"){
+              $("#rutProveedorAgregandoElementoContablePlanillaNewYEdit").text(String(" "))
+              $("#proveedorAAsociarUnElementoContable").val("")
+        }
 }
 
 //------------usando ajax para retirar datos contables de un año
@@ -111,10 +202,13 @@ function recopilandoInformacionPlanillaContabilidadEERRDeAnoSeleccionado(){
   var userid = $("#selectAnoContabilidadEERR").attr("data-userid");
   //creamos el arreglo donde se guardara la info a usar de todos los elementos contables
   var arregloInfoElementosContablesRecopilados = [];
+
   $.getJSON("/users/"+userid+"/campos/"+campoid+"/cambiarInfoContableAno",{ano: ano}, function(result){
     $.each(result,function(i,field){
+         // obtenemos el monto que sera la suma de:
+         // monto = montoexcento + montoneto + montovalorotroimpuesto + montoexento
          // ojo que la fecha esta en ano-mes-dia  y que para js a diferencia de ruby el mes parte con enero en 0
-         arregloInfoElementosContablesRecopilados.push(String(field.cuentaprincipal)+"-"+String(field.cuentasecundaria)+","+String((new Date(field.fecha)).getMonth())+","+String(field.tipoIngresoEgreso)+","+String(field.monto) );
+         arregloInfoElementosContablesRecopilados.push(String(field.cuentaprincipal)+"-"+String(field.cuentasecundaria)+","+String((new Date(field.fecha)).getMonth())+","+String(field.tipoIngresoEgreso)+","+String(field.montoexento+field.montoneto+field.montovalorotroimpuesto) );
        });
     mostrandoInformacionElementosContables(arregloInfoElementosContablesRecopilados);
   });

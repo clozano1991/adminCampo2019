@@ -1,14 +1,15 @@
 <div class="contenedorFondoPlanillaContabilidad">
 	<div class="barraArribaPlanillaContabilidad">
         <div class="letraNormal">
-           <strong> Contabilidad campo: <%=@campo.nombre%></strong>
+           <strong> Resultado Anual campo: <%=@campo.nombre%></strong>
         </div> 
 
       <div class="botonesBarraArribaPlanillaContabilidadMasSeleccionFecha">
+            
             <div class="letraNormal" id="vinetaSeleccionarAnoIndexElementosContables"><%= "Año: "%></div>
             <div>
                   <select class="custom-select" id="selectAnoContabilidadEERR" data-userid="<%=current_user.id%>" data-campoid="<%=@campo.id%>">
-                        <% @ano = Time.now.year + 1%>
+                        <%@ano= Time.now.year%>
                         <%until @ano == 2014 do%>
                         <!-- verificamos si es el año actual para seleccioanrlo -->
                         <% if @ano == Time.now.year%>
@@ -17,11 +18,14 @@
                         <!-- verificamos si es el año actual para no seleccioanrlo -->
                         <%if @ano != Time.now.year%>
                         <option><%=@ano%></option>
-                        <%end%>
-                        <% @ano = @ano -1%>
-                        <%end%>
+                        <%end%> 
+                        <% @ano = @ano -1 %>
+                        <%end%> 
                   </select>     
             </div>
+            
+            <%=link_to(button_tag("Documentos", class: "btn botonAzul botonBarraArribaListaGrande" ),user_campo_indexTotalAnualElementosContables_path(current_user,@campo), method: :get  )%>
+
             <!--<div class="contenedorBotonesBarraArribaContabilidad">
                   <%=link_to(button_tag("Indicadores", class: "btn botonAzul botonBarraArribaPlanillaContabilidad" ),new_user_campo_elemento_contable_path(current_user,@campo), method: :get)%>
             </div>-->

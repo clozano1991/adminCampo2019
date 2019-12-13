@@ -5,11 +5,11 @@ class EmpleadosController < ApplicationController
 		@empleados=current_user.campos.find(params[:campo_id]).empleados.all
 		@campo=current_user.campos.find(params[:campo_id])	
 	end 
-
+ 
 	def show
 		@empleado=current_user.campos.find(params[:campo_id]).empleados.find(params[:id])
 		@campo=current_user.campos.find(params[:campo_id])
-	end
+	end 
 
 	def new
 		@campo=current_user.campos.find(params[:campo_id])
@@ -34,12 +34,11 @@ class EmpleadosController < ApplicationController
 	def update
 		@campo=current_user.campos.find(params[:campo_id])
 		@empleado=current_user.campos.find(params[:campo_id]).empleados.find(params[:id])
-		@empleado.update(empleado_params)
+		@empleado.update(proveedor_params)
 		respond_to do|format|
 			format.html {redirect_to user_campo_empleados_path(current_user,@campo)}
 			format.js 
 		end
-		
 	end 
 
 	def destroy

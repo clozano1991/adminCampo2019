@@ -1,0 +1,126 @@
+<div class="contenedorFondoPlanillaNewYEdit">
+	<%=form_for @proveedor, url: user_campo_proveedors_path(current_user,@campo), method: :post,:html => { :id => "formAgregarEmpleado" } do |form| %>
+
+	<div class="opcionesArribaFichaGenerica">  
+		<div><strong> Agregando proveedor</strong></div>
+		<%=form.submit("Agregar", class: "btn botonVerde")%> 
+	</div>
+	<div class="contenedorLinkSuperioresMasContenidoFichaGenerica"> 
+
+		<!------------------------agregando datos de la persona------------------------>    
+		<div class=bloqueContenedorInformacionPlanillaNewYEdit>
+			<div class="elementoColumnaFilaFichaGenerica letraNormal">
+				<div><strong>Datos del Proveedor</strong></div> 
+			</div>
+			<div class="filaFichaGenerica newYEditEmpleado">
+				<div class="columnaFilaFichaGenerica TresColumnasPorFila">
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Razon Social</strong></label>
+						<%=form.text_field :razonsocial, class: "form-control agregarEmpleado", required: true, :maxlength => 40, :minlength => 5%>
+					</div> 
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Rut</strong></label>
+						<%=form.text_field :rut, class: "form-control agregarEmpleado", required: true, :maxlength => 30, :minlength => 5%> 
+					</div>
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Trabajo Ofrecido</strong></label>
+						<%=form.text_field :tipoproductoservicio, class: "form-control agregarEmpleado"%>
+					</div> 
+				</div>
+				<div class="columnaFilaFichaGenerica TresColumnasPorFila">
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Dirección</strong></label>
+						<%=form.text_field :direccion, class: "form-control agregarEmpleado"%>
+					</div>
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Nombre Contacto</strong></label>
+						<%=form.text_field :nombrecontacto, class: "form-control agregarEmpleado"%>
+					</div>
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						
+					</div>  
+				</div>
+				<div class="columnaFilaFichaGenerica TresColumnasPorFila">
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>E-mail</strong></label>
+						<%=form.text_field :correoelectronicocontacto, class: "form-control agregarEmpleado"%>
+					</div>   
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Telefono Contacto</strong></label>
+						<%=form.text_field :telefonocontacto, class: "form-control agregarEmpleado"%>
+					</div> 
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+
+					</div>  
+				</div>
+			</div><!--fin una fila de la ficha-->
+
+			<div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica UnaColumnaPorFila">
+                <div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+                    <label><strong>Observacion</strong></label>
+                    <%=form.text_area :observacion, class: "form-control agregarEmpleado areaTextoFila" %>
+                </div>     
+            </div>
+        </div><!--fin una fila de la ficha-->
+		</div><!--fin bloque informacion-->
+<!------------------------ fin agregando datos basicos de proveedor ------------------------>
+<!------------------------ fin agregando datos basicos de proveedor ------------------------>
+			<div class=bloqueContenedorInformacionPlanillaNewYEdit>
+			<div class="elementoColumnaFilaFichaGenerica letraNormal">
+				<div><strong>Datos de Pago</strong></div> 
+			</div>
+			<div class="filaFichaGenerica newYEditEmpleado">
+				<div class="columnaFilaFichaGenerica TresColumnasPorFila">
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Banco</strong></label>
+						<%=form.text_field :parapagobanco, class: "form-control agregarEmpleado"%>
+					</div> 
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Rut Asociado a cuenta Bancaria</strong></label>
+						<%=form.text_field :parapagorutasociadoacuentabancaria, class: "form-control agregarEmpleado"%>
+					</div>
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						
+					</div> 
+				</div>
+				<div class="columnaFilaFichaGenerica TresColumnasPorFila">
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+					    <label><strong>Tipo De Cuenta</strong></label>
+						<%=form.text_field :parapagotipocuentabancaria, class: "form-control agregarEmpleado"%> 
+					</div>
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>Nombre Asociado a cuenta Bancaria</strong></label>
+						<%=form.text_field :parapagonombreasociadoacuentabancaria, class: "form-control agregarEmpleado"%>
+					</div>
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						
+					</div>  
+				</div>
+				<div class="columnaFilaFichaGenerica TresColumnasPorFila">
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						<label><strong>N° Cuenta Bancaria</strong></label>
+						<%=form.text_field :parapagonumerocuentabancaria, class: "form-control agregarEmpleado"%>
+					</div>   
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+						
+					</div> 
+					<div class="elementoColumnaFilaFichaGenerica letraNormalChica">
+
+					</div>  
+				</div>
+			</div><!--fin una fila de la ficha-->
+
+			<div class="filaFichaGenerica newYEditEmpleado">
+            <div class="columnaFilaFichaGenerica UnaColumnaPorFila">
+                    
+            </div>
+        </div><!--fin una fila de la ficha-->
+	</div><!--fin bloque informacion-->
+
+
+
+<!------------------------ fin agregando datos basicos de proveedor ------------------------>
+</div><!--fin LinksSuperioresEmpleadoMasContenido-->
+<%end%>
+</div><!--fin contenedorFondoShowFichaEmpleado-->

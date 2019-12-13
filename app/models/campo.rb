@@ -2,6 +2,7 @@
 
 class Campo < ApplicationRecord
   belongs_to :user
+  has_many :proveedors, :dependent => :destroy
   has_many :huertos, :dependent => :destroy
   has_many :empleados, :dependent => :destroy
   has_many :equipos, :dependent => :destroy

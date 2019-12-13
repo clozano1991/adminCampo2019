@@ -1,14 +1,10 @@
  <div class="contenedorFondoPlanillaNewYEdit">
  	<%=form_for @huerto_aplicacione, url: user_campo_huerto_huerto_aplicaciones_path(current_user,@campo, @huerto), method: :post,:html => { :class => "formPlanillaNewYEdit" } do |form| %>
- 	<div class="barraArribaPlanillaNewYEdit">
- 		<h5><strong> Agregando una aplicación al huerto, complete los datos antes de agregar</strong></h5>
+ 	<div class="barraArribaPlanillaNewYEdit letraNormal">
+ 		<div><strong> Agregando aplicación al huerto: <%= " "+ @huerto.nombre%></strong></div>
  		<%=form.submit("Agregar", class: "btn botonVerde ")%>
  	</div>
-
  	<div class="bloqueContenedorInformacionPlanillaNewYEdit">
- 		<div class="tituloBloqueContenedorInformacionPlanillaNewYEdit">
- 			Alicación al huerto: <%= " "+ @huerto.nombre%>
- 		</div>
  		<div class="filaInformacionPlanillaNewYEdit">
  			<div class="columnaInformacionTresPorFilaPlanillaNewYEdit">
  				<div class="contenedorInformacionColumnaPlanillaNewYEdit">
@@ -61,11 +57,5 @@
  			</div> 
  		</div>
  	</div>
-
-
-
-
-
-
  	<%end%><!-- fin form --> 
  </div><!-- fin contenedor fondo -->  

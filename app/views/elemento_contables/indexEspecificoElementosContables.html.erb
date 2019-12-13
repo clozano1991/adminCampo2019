@@ -1,28 +1,31 @@
 <div class="contenedorFondoListaGrande">
 
-  <div class="barraArribaListaGrande">
+  <div class="barraArribaListaGrande ">
     <div id="">
-      <h5><strong> Campo: <%=@campo.nombre%> - Contabilidad - <%= @nombreCuentaPrincipalEspecifica.gsub("-"," ") %> - <%= @nombreCuentaSecundariaEspecifica.gsub("-"," ") %> </strong></h5> 
+      <div class="letraNormal"><strong> Campo: <%=@campo.nombre%> - Contabilidad - <%= @nombreCuentaPrincipalEspecifica.gsub("-"," ") %> - <%= @nombreCuentaSecundariaEspecifica.gsub("-"," ") %> </strong></div> 
     </div>
     <div class="botonesBarraArribaListaGrande">
               
               
-    </div>
+    </div> 
   </div>
-  
+   
   <div class="listaGrande" id="contenedorListadoElementosContablesEspecificos" data-contenedorListadoElementosContablesEspecificos="contenedorListadoElementosContablesEspecificos">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered letraNormalChica">
       <thead>
         <tr class="filaSuperiorListaGrande">
-          <th class="tituloColumnaListaGrande" scope="col">Razon Movimiento</th>
-          <th class="tituloColumnaListaGrande" scope="col">Fecha</th>
-          <th class="tituloColumnaListaGrande" scope="col">Monto</th>
+          <th class="letraNormalChica" scope="col">Proveedor</th>
+          <th class="letraNormalChica" scope="col">N° Documento</th>
+          <th class="letraNormalChica" scope="col">Fecha Emición</th>
+          <th class="letraNormalChica" scope="col">Fecha Vencimiento</th>
+          <th class="letraNormalChica" scope="col">Monto Total</th>
+          <th class="letraNormalChica" scope="col">Monto Pendiente</th>
           <th scope="col"></th>
         </tr>
       </thead>  
       <tbody>
           <% @adentroTablaElementosContablesEspecificos = true %>
-          <%=render partial: "elementoContableEspecifico", collection: @elementoContableEspecificos, locals: {campo: @campo, nombreCuentaSecundariaEspecifica: @nombreCuentaSecundariaEspecifica, nombreCuentaPrincipalEspecifica: @nombreCuentaPrincipalEspecifica}%>
+          <%=render partial: "elementoContableEspecifico", collection: @elementoContableEspecificos, locals: {campo: @campo, nombreCuentaSecundariaEspecifica: @nombreCuentaSecundariaEspecifica, nombreCuentaPrincipalEspecifica: @nombreCuentaPrincipalEspecifica, proveedors: @Proveedors}%>
           <% @adentroTablaElementosContablesEspecificos = false %>
       </tbody>
     </table>

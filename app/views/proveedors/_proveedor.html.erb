@@ -1,0 +1,80 @@
+  <!-- esta parte se ejecutara solo cuando queremos poner algo en la tabla -->
+<% if @adentroTablaProveedor == true %>
+  <tr class="filaMiniListaContenida" id="filaProveedor_<%=proveedor.id%>">
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila">
+      	  <div class="pocaInformacionMiniListaContenida proveedorTablaPocaInformacion_<%=proveedor.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
+              <%=proveedor.razonsocial%>
+            </div> 
+      	  </div>
+      </td>
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila">
+      	  <div class="pocaInformacionMiniListaContenida proveedorTablaPocaInformacion_<%=proveedor.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
+              <%=proveedor.rut%>
+            </div>
+      	  </div> 
+      </td>
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila">
+      	   <div class="pocaInformacionMiniListaContenida proveedorTablaPocaInformacion_<%=proveedor.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
+              <%=proveedor.tipoproductoservicio%>
+            </div>
+      	   </div>
+      </td>
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila" >
+          <div class="pocaInformacionMiniListaContenida proveedorTablaPocaInformacion_<%=proveedor.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
+              <%=proveedor.nombrecontacto%>
+            </div>
+          </div>
+      </td>
+      <td class="columnaInformacionMiniListaContenidaCincoPorFila" >
+      	  <div class="pocaInformacionMiniListaContenida proveedorTablaPocaInformacion_<%=proveedor.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionMiniListaContenida">
+              <%=proveedor.telefonocontacto%>
+            </div>
+      	  </div>
+      </td>
+      <td class="columnaImagenesDerechaMiniListaContenida">
+      	   <div class="pocaInformacionMiniListaContenida proveedorTablaPocaInformacion_<%=proveedor.id%>" >
+              <div class="contenedorImagenesYBotonesDerechaMiniListaContenida">
+      	   	   <div class="imagenesDerechaMiniListaContenida">
+                <%=link_to(image_tag("verDetalleLupa.png",class: "fotoOpcion", :data=>{ :toggle => "tooltip", :placement => "top", :title => "Ver detalle"}),user_campo_proveedor_path(current_user,@campo,proveedor.id), method: :get)%>
+                    <%=link_to(image_tag("editarAmarillo.png",class: "fotoOpcion", :data=>{ :toggle => "tooltip", :placement => "top", :title => "Editar"}),edit_user_campo_proveedor_path(current_user,@campo, proveedor.id), method: :get)%>
+                    <%=image_tag("deleteRed.png",class: "fotoOpcion imagenBorrarProveedor" , :data=>{:id => (proveedor.id).to_s, :toggle => "tooltip", :placement => "top", :title => "Borrar"})%>
+               </div>
+              </div>
+      	   </div>
+      </td>
+  </tr>
+<%end%>
+<!-- fin del contenido de la tabla -->
+
+
+<!-- esta parte se ejecutara solo cuando queremos poner los modals para confirmar el borrado -->
+<%if @adentroContenedorModalsBorrarProveedor  == true%>
+  <div class="modal fade " id="modal_borrar_proveedor_<%=proveedor.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content o"> 
+        <div class="modal-header">
+          <div>
+             <h5>
+                <strong>Borrando aplicación</strong>
+             </h5>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="top" data-title="cerrar ventana">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                  <h5>
+                    ¿Seguro que desea borrar esta aplicación?
+                  </h5>
+                    <%=link_to(button_tag("Borrar Aplicación", class: "btn botonRojo botonConfirmarBorrarEmpleado"), user_campo_proveedor_path(current_user,campo,proveedor), method: :delete, remote: true )%>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%><!-- fin modal para borrar empleado -->
+

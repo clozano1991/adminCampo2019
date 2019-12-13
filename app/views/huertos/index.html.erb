@@ -5,7 +5,7 @@
   <div class="contenedorDivIzquierdaYDivDerecha">
   <div class="gridIzquierda">
     <div class="nombreCampoParaIndexHuertos">
-      <h5><strong> Campo: <%=@campo.nombre%></strong></h5>
+      <div class="letraNormal"><strong> <%=@campo.nombre%></strong></div>
     </div>
     <div class="contenedorGeneralVistasGridIzquierdaIndexHuertos">
       <!--vista normal-->
@@ -24,9 +24,9 @@
         </div>
       </div>
       <!--vista agregando huerto-->
-      <div class=" vistasIndexHuertos vistaAgregandoHuertoIndexHuertos">
+      <div class=" vistasIndexHuertos vistaAgregandoHuertoIndexHuertos letraNormalChica">
           <p class="textoAyudaGridIzquierdaIndexHuertos">1) Cree la figura del huerto haciendo diferentes clicks en el espacio de la derecha.</p> 
-          <p class="textoAyudaGridIzquierdaIndexHuertos">2) Una vez que la figura del nuevo huerto este estalecida precione el boton "crear" para continuar.</p> 
+          <p class="textoAyudaGridIzquierdaIndexHuertos">2) Una vez que la figura del nuevo huerto este completa precione el boton "crear" para continuar.</p> 
           <div class="contenedorBotonAgregandoHuertoGridIzquierdaIndexHuertos">
             <button type="button" class="btn botonVerde botonGridIzquierdaIndexHuertosAgregar" id="botonConfirmarAgregarHuerto">Crear</button>
             <button type="button" class="btn botonRojo botonGridIzquierdaIndexHuertosAgregar" id="cancelarAgregarHuerto">Cancelar</button>   
@@ -35,7 +35,7 @@
       <!------------------vista editando huerto figura grid izquierda----------------------------------------->
 
 
-      <div class=" vistasIndexHuertos vistaEditandoHuertoFiguraIndexHuertos" >
+      <div class=" vistasIndexHuertos vistaEditandoHuertoFiguraIndexHuertos letraNormalChica" >
           <p class="textoAyudaGridIzquierdaIndexHuertos"> 1) Cree la nueva figura del huerto haciendo clicks en el espacio de la derecha.</p> 
           <p class="textoAyudaGridIzquierdaIndexHuertos"> 2) Una vez que la nueva figura este establecida precione el boton "Editar" para finalizar.</p>
           <div class="contenedorBotonEditandoHuertoGridIzquierdaIndexHuertos">
@@ -109,9 +109,7 @@
 
 
             <!--Son las alertas que aparecen dentro del mapa-->
-            <div id="avisoNoSePuedeCambiarBloque" class="alert alert-success" role="alert">
-                <strong>No se puede cambiar de bloque mientras se esta creando o editando un huerto.</strong>
-            </div>
+           
             <div id="avisoSuperficieHuertoNoValida" class="alert alert-primary" role="alert">
                   <strong> Primero se tiene que asignar una superficie valida en el mapa</strong>
             </div>
@@ -126,6 +124,10 @@
             <div id="modalsHuertosOpciones">
                <!--esta parte se ejecuta en el else del partial huerto-->
                <%=render partial: "huerto", collection: @huertos, locals: {campo: @campo}%>
+            </div>
+
+             <div id="avisoNoSePuedeCambiarBloque" class="alert alert-primary " role="alert">
+                <strong>No se puede cambiar de bloque mientras se esta creando o editando un huerto.</strong>
             </div>
 
 

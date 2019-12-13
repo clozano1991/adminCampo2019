@@ -16,7 +16,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-between; 
 	align-items: center;
 	width: 100%;
 	max-width: 2300px;
@@ -84,6 +84,11 @@
 	position: relative;
 	height: 100%;
     width: 18.4%;
+}
+.columnaInformacionListaGrandeSeisPorFila{
+	position: relative;
+	height: 100%;
+    width: 12.3%;
 }
 /*esta es la columna de la derecha donde se ponen los iconos*/
 .columnaImagenesDerechaListaGrande{

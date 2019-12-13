@@ -48,7 +48,7 @@ class HuertosController < ApplicationController
 	private
 	
 	def huerto_params
-		params.require(:huerto).permit(:nombre, :clase, :coordenadas, :cultivo, :variedades, :descripcion, :bloqueMapa)
+		params.require(:huerto).permit(:nombre, :clase, :coordenadas, :cultivo, :variedades, :descripcion, :bloqueMapa, :nhectareas, :nplantas)
 	end
 
 

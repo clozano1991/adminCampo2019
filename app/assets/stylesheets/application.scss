@@ -22,9 +22,15 @@
 .table{
 	margin-bottom: 0px;
 }
+.td{
+	overflow: hidden;
+}
+.tr{
+	overflow: hidden;
+}
 
 /* aca estan los estilos de las cosas generales*/
-body{
+body{ 
 	opacity: 1 !important;
 	background-color: rgb(245, 249, 252);
 }
@@ -106,14 +112,13 @@ ul{
 	background-color: #f57814;
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 2px 8px 0 rgba(0,0,0, 0.19);
 }
-.btn.botonAzul{
+.btn.botonAzul{ 
 	font-weight: 450;
 	color: #f5f8fa;
 	background-color: #10167f;
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 2px 8px 0 rgba(0,0,0, 0.19);
-
 }
-
+ 
 /* -------------------------------------------------------------------------------------------*/
 /* para regular el tamaño de las letras*/
 .letraChica{
@@ -122,10 +127,10 @@ ul{
 .letraNormalChica{
 	font-size: 13.8px;
 }
-
 .letraNormal{
-	font-size: 16px;     
+	font-size: 16px;      
 }
 .letraGrande{ 
 	font-size: 22px; 
 }
+ 

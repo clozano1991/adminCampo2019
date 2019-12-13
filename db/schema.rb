@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190103202744) do
+ActiveRecord::Schema.define(version: 20191013190117) do
 
   create_table "campos", force: :cascade do |t|
     t.string "nombre"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20190103202744) do
     t.index ["equipo_id"], name: "index_depreciaciones_on_equipo_id"
   end
 
+  create_table "elemento_contable_pagos", force: :cascade do |t|
+    t.date "fecha"
+    t.integer "montopagado"
+    t.string "metodopago"
+    t.string "observacion"
+    t.integer "elemento_contable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["elemento_contable_id"], name: "index_elemento_contable_pagos_on_elemento_contable_id"
+  end
+
   create_table "elemento_contables", force: :cascade do |t|
     t.integer "campo_id"
     t.string "nombre"
@@ -47,7 +58,17 @@ ActiveRecord::Schema.define(version: 20190103202744) do
     t.datetime "updated_at", null: false
     t.string "cuentaprincipal"
     t.string "cuentasecundaria"
+    t.integer "montoexento" 
+    t.integer "montoneto"
+    t.integer "montoivarecuperable"
+    t.integer "montoivanorecuperable"
+    t.integer "montovalorotroimpuesto"
+    t.string "tipodocumento"
+    t.string "numerodocumento"
+    t.date "fechaparapago"
+    t.integer "proveedor_id"
     t.index ["campo_id"], name: "index_elemento_contables_on_campo_id"
+    t.index ["proveedor_id"], name: "index_elemento_contables_on_proveedor_id"
   end
 
   create_table "empleado_abandonos", force: :cascade do |t|
@@ -166,6 +187,8 @@ ActiveRecord::Schema.define(version: 20190103202744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bloqueMapa"
+    t.float "nhectareas"
+    t.integer "nplantas"
     t.index ["campo_id"], name: "index_huertos_on_campo_id"
   end
 
@@ -178,6 +201,26 @@ ActiveRecord::Schema.define(version: 20190103202744) do
     t.datetime "updated_at", null: false
     t.string "haberDescuentoExtra"
     t.index ["empleado_pago_id"], name: "index_pago_items_on_empleado_pago_id"
+  end
+
+  create_table "proveedors", force: :cascade do |t|
+    t.integer "campo_id"
+    t.string "razonsocial"
+    t.string "rut"
+    t.string "tipoproductoservicio"
+    t.string "direccion"
+    t.string "nombrecontacto"
+    t.string "telefonocontacto"
+    t.string "parapagobanco"
+    t.string "parapagotipocuentabancaria"
+    t.string "parapagonumerocuentabancaria"
+    t.string "parapagonombreasociadoacuentabancaria"
+    t.string "parapagorutasociadoacuentabancaria"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "correoelectronicocontacto"
+    t.string "observacion"
+    t.index ["campo_id"], name: "index_proveedors_on_campo_id"
   end
 
   create_table "users", force: :cascade do |t|

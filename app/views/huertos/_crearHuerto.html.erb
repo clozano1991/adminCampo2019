@@ -4,25 +4,33 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><strong>Completar datos del Huerto para continuar </strong></h5>
+        <div class="modal-title letraNormal" id="exampleModalLongTitle"><strong>Completar datos del Huerto para continuar </strong></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body letraNormalChica">
              <%=form_for @huerto, url: user_campo_huertos_path(current_user,@campo), method: :post, :html => { :id => "formAgregarHuerto" }  do |form| %>
-
+ 
                                   <strong>Nombre</strong>
-                                  <%=form.text_field :nombre, class: "form-control textField inputFormCrearHuerto"%>
+                                  <%=form.text_field :nombre, class: "form-control textField inputFormCrearHuerto agregarInformacionPlanillaNewYEdit"%>
 
-                                  <strong> Tipo de cultivo </strong>
-                                  <%=form.text_field :cultivo, class: "form-control textField inputFormCrearHuerto"%> 
+                                  <strong>Variedad de cultivo</strong>
+                                  <%=form.text_field :variedades, class: "form-control textField inputFormCrearHuerto agregarInformacionPlanillaNewYEdit"%>
 
-                                  <strong>Variedades de cultivo</strong>
-                                  <%=form.text_field :variedades, class: "form-control textField inputFormCrearHuerto"%>
+                                   <strong> Formación de cultivo </strong>
+                                  <%=form.text_field :cultivo, class: "form-control textField inputFormCrearHuerto agregarInformacionPlanillaNewYEdit"%>  
+
+                                   <strong> N° Hectareas </strong>
+                                  <%=form.number_field :nhectareas, class: "form-control textField inputFormCrearHuerto agregarInformacionPlanillaNewYEdit", in: 0.0..999999999999.0, step: :any, required: true%>
+
+                                   <strong>Numero Plantas</strong>
+                                   <%=form.number_field :nplantas, class: "form-control textField inputFormCrearHuerto agregarInformacionPlanillaNewYEdit", in: 0.0..999999999999.0, step: :any, required: true%>
+
+
 
                                   <strong>Descripción</strong>
-                                  <%=form.text_area :descripcion, class: "form-control textField inputFormCrearHuerto"%>
+                                  <%=form.text_area :descripcion, class: "form-control textField inputFormCrearHuerto agregarInformacionPlanillaNewYEdit"%>
 
                                   <strong>Color</strong>
                                   <%=form.select(:clase, options_for_select([['Verde', 'green'], ['Rojo', "red"],['Amarillo', "yellow"],['Azul', "blue"]]))%>

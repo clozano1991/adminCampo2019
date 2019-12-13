@@ -1,0 +1,179 @@
+<div class="contenedorFondoFichaGenerica">
+
+  <div class="contenedorLinkSuperioresMasContenidoFichaGenerica">
+   <div class="FichaGenerica">
+    <div class="contenedorFichaGenericaConPadings">
+      <!--ahor aponemos el contenido-->
+      <div class="filaFichaGenerica">
+        <div class="columnaFilaFichaGenerica TresColumnasPorFila">
+         <div class="elementoColumnaFilaFichaGenerica letraNormal">
+          <strong>Razon Social Provedor: </strong>
+          <%@buscandoProveedor= "sinProveedor"%>
+          <%@proveedors.each do |x|%>
+          <%if x.id == @elemento_contable.proveedor_id%>
+          <%=x.razonsocial%>
+          <%@buscandoProveedor= "Tiene"%>
+          <%end%>
+          <%end%>
+          <%if @buscandoProveedor == "sinProveedor"%>
+          <%="Sin Proveedor Asociado"%>
+          <%end%>
+        </div>
+        <div class="elementoColumnaFilaFichaGenerica letraNormal">
+          <strong>Rut Provedor:</strong> 
+          <%@buscandoProveedor= "sinProveedor"%>
+          <%@proveedors.each do |x|%>
+          <%if x.id == @elemento_contable.proveedor_id%>
+          <%=x.rut%>
+          <%@buscandoProveedor= "Tiene"%>
+          <%end%>
+          <%end%>
+          <%if @buscandoProveedor == "sinProveedor"%>
+          <%="Sin Proveedor Asociado"%>
+          <%end%>
+        </div>
+        <div class="elementoColumnaFilaFichaGenerica letraNormal"> 
+          <strong>Tipo Documento:</strong> 
+          <%= " " + @elemento_contable.tipodocumento.to_s%>
+        </div>
+        <div class="elementoColumnaFilaFichaGenerica letraNormal">
+          <strong>Fecha Emición: </strong>
+          <%= " " + @elemento_contable.fecha.to_s%>
+        </div>
+        <div class="elementoColumnaFilaFichaGenerica letraNormal">
+          <strong>Fecha Vencimiento: </strong>
+          <%= " " + @elemento_contable.fechaparapago.to_s%>
+        </div>
+
+      </div><!--fin de una columna-->
+      <div class="columnaFilaFichaGenerica TresColumnasPorFila ">
+       <div class="elementoColumnaFilaFichaGenerica letraNormal">
+        <strong>Tipo Movimiento: </strong>
+        <%= " " + @elemento_contable.tipoIngresoEgreso.to_s%>
+      </div>
+      <div class="elementoColumnaFilaFichaGenerica letraNormal">
+        <strong>Monto Neto:</strong> 
+        <%= " " + @elemento_contable.montoneto.to_s%>
+      </div>
+      <div class="elementoColumnaFilaFichaGenerica letraNormal">
+        <strong>Monto Exento: </strong>
+        <%= " " + @elemento_contable.montoexento.to_s%>
+      </div>
+      <div class="elementoColumnaFilaFichaGenerica letraNormal">
+        <strong>Monto Otros Impuestos: </strong>
+        <%= " " + @elemento_contable.montovalorotroimpuesto.to_s%>
+      </div>
+      <div class="elementoColumnaFilaFichaGenerica letraNormal">
+        <strong>Monto IVA Recuperable: </strong>
+        <%= " " + @elemento_contable.montoivarecuperable.to_s%>
+      </div>
+    </div><!--fin de una columna   (number_to_currency(1000))-->
+    <div class="columnaFilaFichaGenerica TresColumnasPorFila ">
+      <div class="elementoColumnaFilaFichaGenerica letraNormal">
+        <strong> Observación: </strong>
+        <%= " " + @elemento_contable.observacion.to_s%>
+      </div>
+    </div><!--fin de una columna-->
+
+
+  </div> <!--fin de una fila-->
+
+
+
+</div>
+</div>
+
+<div class="FichaGenerica">
+  <div class="contenedorMiniListaContenida"></div>
+  <table class="table table-striped table-bordered letraNormalChica ">
+    <thead>
+      <tr class="filaSuperiorMiniListaContenida">
+        <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaCuatroPorFila" >Fecha Pago</th>
+        <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaCuatroPorFila" >Metodo Pago</th>
+        <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaCuatroPorFila" >Monto</th>
+        <th class="tituloColumnaMiniListaContenida columnaInformacionMiniListaContenidaCuatroPorFila" >Observación</th>
+        <th class="tituloColumnaBotonMiniListaContenida columnaInformacionMiniListaContenidaCuatroPorFila" > 
+         <%=button_tag("+ Pago", class: "btn botonNaranjo botonAgregarPago", id: "botonAgregarElementoContablePago")%>
+       </th> 
+     </tr>
+   </thead>    
+   <tbody class="letraNormalChica"> 
+    <% @adentroTablaElementoContablePago = true %>
+
+    <%=render partial: "elementoContablePago", collection: @elemento_contable_pagos, locals: {campo: @campo, elementoContable: @elemento_contable}%>
+    <% @adentroTablaElementoContablePago = false %>
+  </tbody>
+</table>
+</div><!--fin contenedorMiniListaContenida-->
+
+</div><!--fin FichaGenerica-->
+</div>
+
+</div><!--fin LinksSuperioresEmpleadoMasContenido-->
+</div><!--fin contenedorFondoShowFichaHuerto--> 
+
+<!--+++++++++++++++++modals para confirmar borrar un equipo+++++++++++++++++++++++++++++-->
+<div class="contenedorModals"> 
+  <% @adentroContenedorModalsElementoContablePago  = true %>
+  <%=render partial: "elementoContablePago", collection:  @elemento_contable_pagos, locals: {campo: @campo, elementoContable: @elemento_contable}%>
+</div>
+<% @adentroContenedorModalsBorraradentroTablaElementoContablePago = false %>
+<!--+++++++++++++++++fin modals++++++++++++++++++++++++++++-->
+
+
+
+
+<!-- _______________________________________________________________________________-->
+<!-- modal para crear un elemento contable pago-->
+<div class="modal fade bd-example-modal-lg" id="agregarElementoContablePagoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title letraNormal" id="exampleModalLongTitle"><strong>
+        Información del Pago </strong></div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body letraNormalChica">
+        <%=form_for @elemento_contable_pago, url: user_campo_elemento_contable_elemento_contable_pagos_path(current_user,@campo, @elemento_contable), method: :post, :html => { :id => "formAgregarElementoContablePago" }  do |form| %>
+
+        <div class="filaInformacionPlanillaNewYEdit">
+          <div class="columnaInformacionUnaPorFilaPlanillaNewYEdit"> 
+
+            <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+              <strong>Fecha Pago</strong>
+              <%=form.date_field :fecha, class: "form-control agregarInformacionPlanillaNewYEdit", value: Time.now.strftime("%Y-%m-%d"), required: true%>
+            </div>
+            
+
+
+            <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+              <strong>Metodo Pago</strong>
+              <%=form.select(:metodopago, ["Transferencia Bancaria","Vale Vista","Cheque","Efectivo", "Otro"],{}, {:class => "form-control agregarInformacionPlanillaNewYEdit",id: "selectTipoDocumentoPlanillaNewYEdit",required: true, :maxlength => 55})%>
+            </div>
+
+
+            <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+              <strong> Monto Pagado </strong>
+              <%=form.number_field :montopagado, class: "form-control agregarInformacionPlanillaNewYEdit verificableParaMontoTotal", in: 0.0..999999999999.0, step: :any, required: true, value: 0 %>
+            </div>
+            
+
+
+            <div class="contenedorInformacionColumnaPlanillaNewYEdit">
+              <strong>Observación</strong>
+              <%=form.text_area :observacion, class: "form-control textField agregarInformacionPlanillaNewYEdit"%>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- aca ponemos el boton para confirmar la creacion -->
+        <%=form.submit("Agregar", class: "btn botonVerde ", id: "botonConfirmarCrearElementoContablePagoForm")%>
+        <%end%> 
+
+      </div>
+    </div>
+  </div>
+</div>

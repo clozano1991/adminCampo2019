@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 		
 	resources :users do
 		resources :campos do
+			resources :proveedors
+			get "/detectandoProveedorConRazonSocial" => "proveedors#detectandoProveedorConRazonSocial", as: :detectandoProveedorConRazonSocial
+			
 			resources :empleados do
 				resources :empleado_horarios
-				resources :empleado_pagos do
+				resources :empleado_pagos do  
 					resources :pago_items
 				end
 
@@ -26,9 +29,14 @@ Rails.application.routes.draw do
 			resources :equipos do
 				resources :depreciaciones
 			end
-			resources :elemento_contables 
+			resources :elemento_contables do
+				resources :elemento_contable_pagos
+			end
 			get "/cambiarInfoContableAno" => "elemento_contables#recopiladoElementosContablesEnUnAno", as: :recopiladoElementosContablesEnUnAno
             get "/listadoElementosContablesEspecificos/:cuentaPrincipalEspecifica/:cuentaSecundariaEspecifica" => "elemento_contables#indexEspecificoElementosContables", as: :indexEspecificoElementosContables
+			get "/indexTotalAnualElementosContables" => "elemento_contables#indexTotalAnualElementosContables", as: :indexTotalAnualElementosContables
+			
+
 
 			#para la parte de las configuraciones de parametros
 			get "/configuracionParametros" => "campos#configuracionParametros", as: :configuracionParametros

@@ -1,0 +1,43 @@
+<div class="contenedorFondoListaGrande">
+
+  <div class="barraArribaListaGrande ">
+    <div id="">
+      <div class="letraNormal"><strong> Documentos Contables Campo: <%=@campo.nombre%> </strong></div> 
+    </div>
+    <div class="botonesBarraArribaListaGrande">
+              
+              
+    </div> 
+  </div> 
+   
+  <div class="listaGrande" id="contenedorListadoElementosContablesEspecificos" data-contenedorListadoElementosContablesEspecificos="contenedorListadoElementosContablesEspecificos">
+    <table class="table table-striped table-bordered letraNormalChica">
+      <thead>
+        <tr class="filaSuperiorListaGrande">
+          <th class="letraNormalChica" scope="col">Proveedor</th>
+          <th class="letraNormalChica" scope="col">N° Documento</th>
+          <th class="letraNormalChica" scope="col">Fecha Emición</th>
+          <th class="letraNormalChica" scope="col">Fecha Vencimiento</th>
+          <th class="letraNormalChica" scope="col">Monto Total</th>
+          <th class="letraNormalChica" scope="col">Monto Pendiente</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>  
+      <tbody>
+          <% @adentroTablaElementosContablesTotal = true %>
+          <%=render partial: "elementoContableTotal", collection: @elementoContableTotal, locals: {campo: @campo, nombreCuentaSecundariaEspecifica: @nombreCuentaSecundariaEspecifica, nombreCuentaPrincipalEspecifica: @nombreCuentaPrincipalEspecifica, proveedors: @Proveedors}%>
+          <% @adentroTablaElementosContablesTotal = false %>
+      </tbody>
+    </table>
+  </div>
+
+</div><!--fin contenedorFondoIndexEmpleados-->
+
+ 
+<!--+++++++++++++++++modals para confirmar borrar un empleado+++++++++++++++++++++++++++++++++-->
+<div class="contenedorModalsBorrarEmpleado"> 
+<% @adentroContenedorModalsElementosContablesTotal = true %>
+<%=render partial: "elementoContableTotal", collection: @elementoContableTotal, locals: {campo: @campo,nombreCuentaSecundariaEspecifica: @nombreCuentaSecundariaEspecifica, nombreCuentaPrincipalEspecifica: @nombreCuentaPrincipalEspecifica}%>
+</div>
+<% @adentroContenedorModalsElementosContablesEspecificos  = false %>
+<!--+++++++++++++++++fin modals para confirmar borrar un empleado++++++++++++++++++++++++++++-->
