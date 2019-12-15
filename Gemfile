@@ -38,7 +38,7 @@ gem 'rails', '~> 5.1.4'
 
 # parchando la subida a heroku con el poblema de rake
 gem 'rack-timeout', '0.3.2'
-gem 'rake', '~> 11.2', '>= 11.2.2'
+
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
