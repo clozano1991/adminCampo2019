@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20191013190117) do
     t.datetime "updated_at", null: false
     t.string "cuentaprincipal"
     t.string "cuentasecundaria"
-    t.integer "montoexento" 
+    t.integer "montoexento"
     t.integer "montoneto"
     t.integer "montoivarecuperable"
     t.integer "montoivanorecuperable"
