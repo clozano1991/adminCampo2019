@@ -1,0 +1,15 @@
+current directory: /home/cristobal/Escritorio/adminCampo-master/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/home/cristobal/.rbenv/versions/2.6.1/bin/ruby -I /home/cristobal/.rbenv/versions/2.6.1/lib/ruby/site_ruby/2.6.0 -r ./siteconf20191215-3144-mwn7d2.rb extconf.rb
+creating Makefile
+
+current directory: /home/cristobal/Escritorio/adminCampo-master/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /home/cristobal/Escritorio/adminCampo-master/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/cristobal/Escritorio/adminCampo-master/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20191215-3144-2y5cyu/skiptrace/internal
