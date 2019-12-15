@@ -27,7 +27,7 @@ end
 
 group :production do
   # Use postgres as the database for Active Record
-  gem 'pg', '~> 0.18.4'
+  gem 'pg'#, '~> 0.18.4'
   # para trabajar con heroku usamos:
   gem 'rails_12factor', group: :production
 end
