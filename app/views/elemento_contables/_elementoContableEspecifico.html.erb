@@ -2,11 +2,11 @@
 
 <!-- esta parte se ejecutara solo cuando queremos poner algo en la tabla -->
 <% if @adentroTablaElementosContablesEspecificos == true %>
-  <tr class="filaListaGrande" id="filaElementoContableEspecifico_<%=elementoContableEspecifico.id%>">
+  <tr class="filaListaGrande " id="filaElementoContableEspecifico_<%=elementoContableEspecifico.id%>">
 
     <td class="columnaInformacionListaGrandeSeisPorFila">
           <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande letraNormalChica" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
               <%@buscandoProveedor= "sinProveedor"%>
               <%proveedors.each do |x|%>
                 <%if x.id == elementoContableEspecifico.proveedor_id%>
@@ -23,7 +23,7 @@
 
       <td class="columnaInformacionListaGrandeSeisPorFila">
           <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande letraNormalChica" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
               <%=elementoContableEspecifico.numerodocumento%> 
             </div>
           </div>
@@ -31,7 +31,7 @@
 
       <td class="columnaInformacionListaGrandeSeisPorFila">
           <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande letraNormalChica" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
               <%=elementoContableEspecifico.fecha%> 
             </div>
           </div>
@@ -39,7 +39,7 @@
 
       <td class="columnaInformacionListaGrandeSeisPorFila">
       	  <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande letraNormalChica" id="nombreElementoContable_<%=elementoContableEspecifico.id%>">
               <%=elementoContableEspecifico.fechaparapago%> 
             </div>
       	  </div>
@@ -47,7 +47,7 @@
 
       <td class="columnaInformacionListaGrandeSeisPorFila">
           <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="montoConTipoIngresoEgresoElementoContable_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande letraNormalChica" id="montoConTipoIngresoEgresoElementoContable_<%=elementoContableEspecifico.id%>">
 
                 <%=elementoContableEspecifico.montoexento+elementoContableEspecifico.montoneto+elementoContableEspecifico.montoivarecuperable+elementoContableEspecifico.montovalorotroimpuesto%> 
           
@@ -57,7 +57,7 @@
       </td>
             <td class="columnaInformacionListaGrandeSeisPorFila">
           <div class="pocaInformacionListaGrande elementoContableEspecificoTablaPocaInformacion_<%=elementoContableEspecifico.id%>">
-            <div class="contenedorUnaInformacionPocaInformacionListaGrande" id="fechaElementoContable_<%=elementoContableEspecifico.id%>">
+            <div class="contenedorUnaInformacionPocaInformacionListaGrande letraNormalChica" id="fechaElementoContable_<%=elementoContableEspecifico.id%>">
                 <%if elementoContableEspecifico.tipoIngresoEgreso == "Ingreso"%>
                 <%=elementoContableEspecifico.montoexento+elementoContableEspecifico.montoneto+elementoContableEspecifico.montoivarecuperable+elementoContableEspecifico.montovalorotroimpuesto%> 
               <%end%>

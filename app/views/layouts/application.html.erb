@@ -12,12 +12,14 @@
 
   <div class="barraSuperiorNavegacion">
     <div class="barraSuperiorNavegacionCosasIzquierda letraNormal">
-      logo
-    </div>
-    <div class="barraSuperiorNavegacionCosasDerecha letraNormal">
         <% if signed_in? %>   
           <%= current_user.email %> 
         <% end %>
+    </div>
+    <div class="barraSuperiorNavegacionCosasDerecha letraNormal">
+      <% if signed_in? %> 
+         <%=link_to("Campos",user_campos_path(current_user), method: :get  )%>  
+      <% end %>
     </div>
     
   </div>

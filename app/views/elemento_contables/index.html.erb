@@ -1,7 +1,7 @@
 <div class="contenedorFondoPlanillaContabilidad">
 	<div class="barraArribaPlanillaContabilidad">
         <div class="letraNormal">
-           <strong> Resultado Anual campo: <%=@campo.nombre%></strong>
+           <strong> Resultado Anual</strong>
         </div> 
 
       <div class="botonesBarraArribaPlanillaContabilidadMasSeleccionFecha">
@@ -29,14 +29,15 @@
             <!--<div class="contenedorBotonesBarraArribaContabilidad">
                   <%=link_to(button_tag("Indicadores", class: "btn botonAzul botonBarraArribaPlanillaContabilidad" ),new_user_campo_elemento_contable_path(current_user,@campo), method: :get)%>
             </div>-->
+
       </div>
     </div>
 
     <div class="contenedorCuerpoPlanillaContabilidad" id="contenedorCuerpoPlanillaContabilidad" data-planillaContabilidad="planillaPrincipalNoLasEspecificas">
-    <table class="table table-striped  table-bordered letraNormalChica">
+    <table class="table table-striped  table-bordered table-sm letraNormalChica">
       <thead>
         <tr class="filaSuperiorPlanillaContabilidad">
-          <th class="columnaCuentasPlanillaContabilidad letraNormalChica" scope="col">EE.RR.</th>
+          <th class="columnaCuentasPlanillaContabilidad letraNormalChica" scope="col">Estado de Resultado</th>
           <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Enero</th>
           <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Febrero</th>
           <th class="columnaDatosPlanillaContabilidad letraNormalChica" scope="col">Marzo</th>

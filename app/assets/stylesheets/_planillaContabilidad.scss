@@ -19,7 +19,7 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	max-width: 2300px;
+	max-width: 2000px;
 	margin-top: 15px;
 	padding-left: 8px;
 	padding-right: 8px;
@@ -43,7 +43,7 @@
 .contenedorCuerpoPlanillaContabilidad{
 	position: relative;
 	width: 100%;
-	max-width: 2300px;
+	max-width: 2000px;
 	margin-top: 25px;
 	overflow: auto;
 	background-color: white;
@@ -76,10 +76,10 @@
 }
 /*------------------------------------columnas----------------------------------*/
 .columnaCuentasPlanillaContabilidad{
-    min-width: 265px;
+    min-width: 180px;
 }
 .columnaDatosPlanillaContabilidad{
-	min-width: 100px;
+	min-width: 75px;
 }
 
 /*------------------------------------casillas---------------------------------*/
